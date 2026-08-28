@@ -58,3 +58,16 @@ npm run dev
 ```
 
 Runs at `http://localhost:3100`.
+
+### Deploying `site/` to GitHub Pages
+
+`.github/workflows/deploy-site.yml` builds `site/` as a static export and publishes it to GitHub Pages on every push to `main` that touches `site/`. One-time setup:
+
+1. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+2. Push to `main` (or run the workflow manually from the **Actions** tab) — the site will be live at `https://<org>.github.io/<repo>/`.
+
+To serve it from a custom domain (e.g. `greecon.earth`) instead of the `/‹repo›/` sub-path:
+
+1. Add a `site/public/CNAME` file containing the domain, e.g. `greecon.earth`.
+2. In the workflow, change `NEXT_BASE_PATH` to an empty string.
+3. Point the domain's DNS at GitHub Pages per [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site), and set the domain again under **Settings → Pages → Custom domain**.
