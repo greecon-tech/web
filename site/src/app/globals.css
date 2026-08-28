@@ -1,0 +1,720 @@
+:root {
+  --warm-background: #f7f1e9;
+  --surface: #e8e0d3;
+  --deep-green-gray: #2f3d35;
+  --pale-green-blue: #d8e2dc;
+  --living-green: #448561;
+  --near-black-green: #1a211d;
+  --line: rgba(47, 61, 53, 0.2);
+  --muted: rgba(26, 33, 29, 0.66);
+  --bg-behind: #f7f1e9;
+  --accent: #448561;
+  font-family: var(--font-plex-serif), "IBM Plex Serif", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--warm-background);
+  color: var(--near-black-green);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.wrap--wide {
+  width: min(1080px, 100%);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.eyebrow-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: currentColor;
+  text-underline-offset: 6px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* ---------- Site header (home) ---------- */
+
+.site-mark {
+  display: flex;
+  justify-content: center;
+  padding: 56px 0 40px;
+  color: var(--living-green);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 0 0 64px;
+}
+
+.hero p {
+  max-width: 780px;
+  margin: 0 auto 22px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.06rem;
+  color: var(--deep-green-gray);
+}
+
+.hero p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Product cards ---------- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  padding: 40px 0;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 14px;
+  background: var(--deep-green-gray);
+  color: var(--warm-background);
+  padding: 30px 26px 26px;
+  min-height: 300px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover,
+.product-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(26, 33, 29, 0.18);
+}
+
+.product-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--living-green);
+}
+
+.product-card h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.15rem;
+}
+
+.product-card p {
+  margin: 0;
+  color: rgba(247, 241, 233, 0.86);
+  font-size: 0.96rem;
+  flex-grow: 1;
+}
+
+.product-card__arrow {
+  color: var(--pale-green-blue);
+}
+
+/* ---------- Platform section ---------- */
+
+.platform {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.platform-shot {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 14px;
+}
+
+.platform-shot__bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.platform-shot__bar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.platform-shot__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.platform-shot__row div {
+  height: 34px;
+  border-radius: 6px;
+  background: var(--pale-green-blue);
+  opacity: 0.7;
+}
+
+.platform-shot__line {
+  height: 10px;
+  border-radius: 4px;
+  background: var(--surface);
+  margin-bottom: 8px;
+}
+
+.platform-shot__line:nth-child(2) {
+  width: 82%;
+}
+
+.platform-copy p {
+  margin: 0 0 14px;
+  color: var(--deep-green-gray);
+}
+
+.platform-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.platform-copy strong {
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-underline-offset: 4px;
+}
+
+.platform-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--living-green);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ---------- Centered statement sections ---------- */
+
+.statement {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.statement h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+}
+
+.statement p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--deep-green-gray);
+}
+
+/* ---------- CTA band ---------- */
+
+.cta {
+  position: relative;
+  margin-top: 40px;
+  padding: 90px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(68, 133, 97, 0.55), transparent 45%),
+    radial-gradient(circle at 80% 15%, rgba(212, 165, 74, 0.5), transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(120, 79, 42, 0.6), transparent 55%),
+    linear-gradient(135deg, #1a211d, #2f3d35 55%, #1a211d);
+}
+
+.cta__panel {
+  position: relative;
+  width: min(460px, 100%);
+  margin: 0 28px;
+  border-radius: 12px;
+  background: rgba(26, 33, 29, 0.82);
+  backdrop-filter: blur(2px);
+  color: var(--warm-background);
+  padding: 34px 32px;
+}
+
+.cta__panel h2 {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin: 0 0 22px;
+}
+
+.waitlist-form {
+  display: grid;
+  gap: 10px;
+}
+
+.waitlist-form label {
+  font-size: 0.92rem;
+  color: rgba(247, 241, 233, 0.85);
+}
+
+.waitlist-form input {
+  min-height: 44px;
+  border-radius: 6px;
+  border: 1px solid rgba(247, 241, 233, 0.4);
+  background: rgba(247, 241, 233, 0.08);
+  color: var(--warm-background);
+  padding: 0 14px;
+  font: inherit;
+}
+
+.waitlist-form input::placeholder {
+  color: rgba(247, 241, 233, 0.5);
+}
+
+.waitlist-form button {
+  min-height: 46px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 999px;
+  background: var(--living-green);
+  color: var(--warm-background);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.waitlist-form button:hover {
+  background: #529c70;
+}
+
+.waitlist-fineprint {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: rgba(247, 241, 233, 0.6);
+}
+
+.waitlist-confirm {
+  margin: 0;
+  color: var(--pale-green-blue);
+  font-style: italic;
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  padding: 56px 0 30px;
+}
+
+.contact-tagline {
+  color: var(--living-green);
+  font-style: italic;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+.contact-copy {
+  max-width: 640px;
+  color: var(--deep-green-gray);
+  margin: 0 0 22px;
+}
+
+.contact-details {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+
+.contact-details > div {
+  display: flex;
+  gap: 6px;
+}
+
+.contact-details dt {
+  font-weight: 700;
+}
+
+.contact-details dd {
+  margin: 0;
+}
+
+.contact-details a {
+  text-decoration: underline;
+}
+
+/* ---------- Footer bar ---------- */
+
+.site-footer {
+  background: var(--deep-green-gray);
+  color: rgba(247, 241, 233, 0.85);
+}
+
+.site-footer .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 0.86rem;
+}
+
+.site-footer a {
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(247, 241, 233, 0.12);
+}
+
+/* ---------- Detail pages (Energy / Agriculture / Water) ---------- */
+
+.detail-page {
+  position: relative;
+  padding-top: 64px;
+}
+
+.back-home {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  display: inline-flex;
+  color: var(--deep-green-gray);
+}
+
+.detail-intro {
+  text-align: center;
+  padding: 0 28px 30px;
+}
+
+.detail-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 20px;
+  border-radius: 999px;
+  background: var(--living-green);
+  color: #fff;
+}
+
+.detail-intro h1 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--deep-green-gray);
+}
+
+.detail-subtitle {
+  font-style: italic;
+  font-size: 1.15rem;
+  margin: 10px 0 26px;
+}
+
+.detail-lede {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-lede p {
+  max-width: 560px;
+  margin: 0;
+  border-radius: 8px;
+  background: var(--deep-green-gray);
+  color: var(--warm-background);
+  font-style: italic;
+  font-weight: 500;
+  text-align: center;
+  padding: 22px 26px;
+}
+
+.detail-body {
+  padding: 30px 0 10px;
+  display: grid;
+  gap: 30px;
+}
+
+.detail-section h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+}
+
+.detail-section p {
+  margin: 0 0 10px;
+  color: var(--deep-green-gray);
+}
+
+.detail-section ul {
+  margin: 0 0 10px;
+  padding-left: 22px;
+}
+
+.detail-section li {
+  font-style: italic;
+  color: var(--deep-green-gray);
+  margin-bottom: 2px;
+}
+
+.detail-section .emphasis {
+  margin: 0;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--near-black-green);
+}
+
+.philosophy {
+  padding: 20px 0 10px;
+}
+
+.philosophy h2 {
+  color: var(--living-green);
+  font-style: italic;
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.philosophy p {
+  margin: 0 0 4px;
+  font-style: italic;
+  color: var(--deep-green-gray);
+}
+
+.philosophy p:last-child {
+  font-weight: 700;
+  color: var(--near-black-green);
+}
+
+.return-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px 0 10px;
+  color: var(--deep-green-gray);
+}
+
+.return-mark__logo {
+  color: var(--living-green);
+}
+
+/* ---------- GAIA Tech page ---------- */
+
+.gaia-hero {
+  text-align: center;
+  padding: 0 28px 30px;
+}
+
+.gaia-hero__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.gaia-hero__icon {
+  color: var(--deep-green-gray);
+}
+
+.gaia-hero__wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.gaia-hero__wordmark span {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--deep-green-gray);
+}
+
+.gaia-hero__wordmark small {
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  color: var(--deep-green-gray);
+}
+
+.gaia-body {
+  display: grid;
+  gap: 18px;
+  padding: 34px 0 10px;
+}
+
+.gaia-body p {
+  margin: 0;
+  color: var(--deep-green-gray);
+}
+
+.gaia-body strong {
+  font-style: italic;
+  color: var(--near-black-green);
+}
+
+/* ---------- Technology & process diagram ---------- */
+
+.process-diagram {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 10px;
+}
+
+.tech-intro {
+  text-align: center;
+  padding: 10px 0 40px;
+}
+
+.tech-intro h1 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+
+.tech-intro p {
+  max-width: 740px;
+  margin: 0 auto;
+  color: var(--deep-green-gray);
+}
+
+.tech-steps {
+  display: grid;
+  gap: 34px;
+  padding: 0 0 40px;
+}
+
+.tech-steps h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.tech-steps p {
+  margin: 0;
+  color: var(--deep-green-gray);
+}
+
+.tech-steps em {
+  font-weight: 600;
+}
+
+.tech-cta {
+  text-align: center;
+  padding: 10px 0 30px;
+}
+
+.tech-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--living-green);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ---------- Legal pages ---------- */
+
+.legal-page {
+  padding: 64px 0 20px;
+}
+
+.legal-page h1 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+}
+
+.legal-page h2 {
+  font-size: 1.1rem;
+  margin: 26px 0 10px;
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--deep-green-gray);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .platform {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding: 0 20px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .back-home {
+    top: 20px;
+    left: 20px;
+  }
+}
