@@ -2,6 +2,8 @@
 
 This repository is the first technical foundation for the Greecon Platform: a calm operational system for renewable energy, water management, agriculture, automation, monitoring, and resource optimization.
 
+It also contains the public Greecon marketing website in `site/` — see below.
+
 The platform is organized as a TypeScript monorepo:
 
 - `apps/web` - Next.js operator interface.
@@ -44,3 +46,15 @@ Local services:
 - Grafana: `http://localhost:3001`
 
 The MVP uses deterministic demo data and simulated commands by default. Real device credentials, gateway certificates, Stripe billing, and production secrets are intentionally excluded.
+
+## Public Website (`site/`)
+
+`site/` is a standalone Next.js app for the public Greecon marketing website — Home, Technology & Process, Agriculture, Energy, Water, and GAIA Tech — separate from the authenticated operator interface in `web/`. It uses the same brand palette and typography (IBM Plex Serif, self-hosted via `next/font`) as the operator interface.
+
+```bash
+cd site
+npm install
+npm run dev
+```
+
+Runs at `http://localhost:3100`.
