@@ -71,3 +71,13 @@ To serve it from a custom domain (e.g. `greecon.earth`) instead of the `/‹repo
 1. Add a `site/public/CNAME` file containing the domain, e.g. `greecon.earth`.
 2. In the workflow, change `NEXT_BASE_PATH` to an empty string.
 3. Point the domain's DNS at GitHub Pages per [GitHub's custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site), and set the domain again under **Settings → Pages → Custom domain**.
+
+### Deploying `site/` to Railway
+
+`site/railway.json` configures the build (`npm ci && npm run build`, a static export) and start command (`npm run start`, which serves the exported `out/` folder with [`serve`](https://www.npmjs.com/package/serve) on Railway's `$PORT`). This needs a one-time connection in the Railway dashboard — Claude doesn't have a Railway account or API token to do this from here:
+
+1. In Railway, **New Project → Deploy from GitHub repo** and pick `greecon-tech/web`.
+2. In the service's **Settings → Source**, set **Root Directory** to `site`. Railway will then pick up `site/railway.json` automatically.
+3. Deploy. Railway assigns a `*.up.railway.app` URL by default; add `greecon.earth` under **Settings → Networking → Custom Domain** when ready, and point its DNS per Railway's instructions.
+
+No `NEXT_BASE_PATH` is needed for Railway — it serves from the domain root, unlike the GitHub Pages `/‹repo›/` sub-path above.

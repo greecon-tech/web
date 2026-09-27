@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function hexafoilPath(cx: number, cy: number, r: number, pull: number): string {
   const points = Array.from({ length: 6 }, (_, i) => {
     const angle = (Math.PI / 180) * (-90 + i * 60);
@@ -34,19 +36,19 @@ export function GaiaMark({ size = 64, className }: { size?: number; className?: 
   );
 }
 
-/** The Greecon mark: a restrained rounded swirl, in the spirit of the placeholder brand mark. */
+const GREECON_MARK_RATIO = 375 / 525;
+
+/** The Greecon brand mark (greecon_icon.svg). `size` sets the rendered height; width follows the mark's own aspect ratio. */
 export function GreeconMark({ size = 40, className }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className} role="img" aria-label="Greecon">
-      <path
-        d="M62 20C40 20 24 36 24 58c0 20 15 34 33 34 12 0 21-6 21-6"
-        stroke="currentColor"
-        strokeWidth="13"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <circle cx="60" cy="60" r="13" fill="var(--bg-behind, #f7f1e9)" />
-    </svg>
+    <Image
+      src="/greecon-mark.svg"
+      alt="Greecon"
+      width={Math.round(size * GREECON_MARK_RATIO)}
+      height={size}
+      className={className}
+      priority
+    />
   );
 }
 
