@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "next dev -p 3100",
     "build": "next build",
-    "start": "next start -p 3100",
+    "start": "serve -s out -l ${PORT:-3100}",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "next": "^16.2.4",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
