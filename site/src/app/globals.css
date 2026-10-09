@@ -613,6 +613,11 @@ h3 {
   padding: 30px 0 10px;
 }
 
+.process-diagram__image {
+  width: min(420px, 100%);
+  height: auto;
+}
+
 .tech-intro {
   text-align: center;
   padding: 10px 0 40px;
@@ -683,9 +688,31 @@ h3 {
   margin: 26px 0 10px;
 }
 
+.legal-updated {
+  color: var(--muted, rgba(26, 33, 29, 0.66));
+  font-style: italic;
+  margin: 0 0 28px;
+}
+
 .legal-page p,
 .legal-page li {
   color: var(--deep-green-gray);
+  max-width: 70ch;
+}
+
+.legal-page ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+  display: grid;
+  gap: 4px;
+}
+
+.legal-page a {
+  text-decoration: underline;
+}
+
+.legal-page strong {
+  color: var(--near-black-green);
 }
 
 /* ---------- Responsive ---------- */

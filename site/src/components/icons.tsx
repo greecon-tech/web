@@ -1,38 +1,15 @@
 import Image from "next/image";
 
-function hexafoilPath(cx: number, cy: number, r: number, pull: number): string {
-  const points = Array.from({ length: 6 }, (_, i) => {
-    const angle = (Math.PI / 180) * (-90 + i * 60);
-    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
-  });
-
-  const segments = points.map((p, i) => {
-    const next = points[(i + 1) % points.length];
-    const c1 = [p[0] + (cx - p[0]) * pull, p[1] + (cy - p[1]) * pull];
-    const c2 = [next[0] + (cx - next[0]) * pull, next[1] + (cy - next[1]) * pull];
-    return `C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)}, ${c2[0].toFixed(2)} ${c2[1].toFixed(2)}, ${next[0].toFixed(2)} ${next[1].toFixed(2)}`;
-  });
-
-  return `M ${points[0][0].toFixed(2)} ${points[0][1].toFixed(2)} ${segments.join(" ")} Z`;
-}
-
-/** The GAIA Tech mark: a six-point hexafoil in a circle, matching the GAIA product mark. */
+/** The GAIA Tech mark (the official hexafoil artwork). */
 export function GaiaMark({ size = 64, className }: { size?: number; className?: string }) {
-  const path = hexafoilPath(50, 50, 34, 0.62);
-  const points = Array.from({ length: 6 }, (_, i) => {
-    const angle = (Math.PI / 180) * (-90 + i * 60);
-    return [50 + 34 * Math.cos(angle), 50 + 34 * Math.sin(angle)];
-  });
-
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" className={className} role="img" aria-label="GAIA Tech mark">
-      <circle cx="50" cy="50" r="46" stroke="currentColor" strokeWidth="3.5" />
-      <path d={path} stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />
-      {points.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r="4.6" fill="var(--accent, #448561)" />
-      ))}
-      <circle cx="50" cy="50" r="4.2" fill="var(--accent, #448561)" />
-    </svg>
+    <Image
+      src="/gaia-mark-art.png"
+      alt="GAIA Tech mark"
+      width={size}
+      height={size}
+      className={className}
+    />
   );
 }
 
@@ -52,37 +29,16 @@ export function GreeconMark({ size = 40, className }: { size?: number; className
   );
 }
 
-function badge(children: React.ReactNode) {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      {children}
-    </svg>
-  );
+export function EnergyIcon({ size = 26 }: { size?: number }) {
+  return <Image src="/energy-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
 }
 
-export function EnergyIcon() {
-  return badge(
-    <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" strokeLinejoin="round" fill="none" />
-  );
+export function AgricultureIcon({ size = 26 }: { size?: number }) {
+  return <Image src="/agriculture-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
 }
 
-export function AgricultureIcon() {
-  return badge(
-    <>
-      <path d="M12 21c0-6.5 3-10 7-11-1 5-2.5 9-7 11Z" />
-      <path d="M12 21c0-5-2-8-6-9 .5 4 2 7.5 6 9Z" />
-      <path d="M12 21v-6" />
-    </>
-  );
-}
-
-export function WaterIcon() {
-  return badge(
-    <>
-      <path d="M12 3c3.5 4 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-7 6-11Z" />
-      <path d="M9.5 15c0 1.4 1 2.5 2.3 2.7" />
-    </>
-  );
+export function WaterIcon({ size = 26 }: { size?: number }) {
+  return <Image src="/water-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
 }
 
 export function ArrowIcon({ className }: { className?: string }) {
