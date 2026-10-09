@@ -53,6 +53,14 @@ export default function TechnologyPage() {
           pillars — integration, automation, and intelligence — combining hardware, data, and human insight to
           create sustainable impact across energy, agriculture, and water.
         </p>
+        <a
+          href="https://app.greecon.earth"
+          target="_blank"
+          rel="noreferrer"
+          className="platform-link platform-link--primary tech-intro__cta"
+        >
+          Open the Platform →
+        </a>
       </section>
 
       <section className="tech-steps wrap">

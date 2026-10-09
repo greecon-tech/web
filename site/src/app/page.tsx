@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../components/Contact";
 import { AgricultureIcon, EnergyIcon, GreeconMark, WaterIcon } from "../components/icons";
@@ -51,21 +52,20 @@ export default function HomePage() {
       </section>
 
       <section className="platform wrap">
-        <div className="platform-shot" aria-hidden="true">
-          <div className="platform-shot__bar">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="platform-shot__row">
-            <div />
-            <div />
-            <div />
-          </div>
-          <div className="platform-shot__line" />
-          <div className="platform-shot__line" />
-          <div className="platform-shot__line" style={{ width: "60%" }} />
-        </div>
+        <a
+          className="platform-shot"
+          href="https://app.greecon.earth"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open the Greecon Platform at app.greecon.earth"
+        >
+          <Image
+            src="/platform-screenshot.jpg"
+            alt="The Greecon Platform overview dashboard, showing live solar, battery, water, and soil metrics across connected sites"
+            width={2000}
+            height={1075}
+          />
+        </a>
         <div className="platform-copy">
           <h2 className="eyebrow-heading underline">Platform</h2>
           <p>
@@ -73,9 +73,14 @@ export default function HomePage() {
             system that connects all devices, sensors, and data into one intelligent dashboard. It helps our
             partners monitor, automate, and optimize their operations in real time.
           </p>
-          <Link href="/technology" className="platform-link">
-            See the technology &amp; process →
-          </Link>
+          <div className="platform-links">
+            <a href="https://app.greecon.earth" target="_blank" rel="noreferrer" className="platform-link platform-link--primary">
+              Open the Platform →
+            </a>
+            <Link href="/technology" className="platform-link">
+              See the technology &amp; process →
+            </Link>
+          </div>
         </div>
       </section>
 
