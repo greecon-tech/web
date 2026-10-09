@@ -29,16 +29,25 @@ export function GreeconMark({ size = 40, className }: { size?: number; className
   );
 }
 
-export function EnergyIcon({ size = 26 }: { size?: number }) {
-  return <Image src="/energy-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
+type Tile = "light" | "green" | "dark";
+
+type TileIconProps = { tile?: Tile; size?: number; className?: string };
+
+/** One icon from the official Greecon icon library, in its tile (background baked into the SVG). */
+function TileIcon({ name, tile = "green", size = 56, className }: TileIconProps & { name: string }) {
+  return <Image src={`/icons/${name}-tile-${tile}.svg`} alt="" width={size} height={size} className={className} aria-hidden="true" />;
 }
 
-export function AgricultureIcon({ size = 26 }: { size?: number }) {
-  return <Image src="/agriculture-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
+export function EnergyIcon(props: TileIconProps) {
+  return <TileIcon name="bolt" {...props} />;
 }
 
-export function WaterIcon({ size = 26 }: { size?: number }) {
-  return <Image src="/water-icon-art.png" alt="" width={size} height={size} aria-hidden="true" />;
+export function AgricultureIcon(props: TileIconProps) {
+  return <TileIcon name="sprout" {...props} />;
+}
+
+export function WaterIcon(props: TileIconProps) {
+  return <TileIcon name="droplet" {...props} />;
 }
 
 export function ArrowIcon({ className }: { className?: string }) {

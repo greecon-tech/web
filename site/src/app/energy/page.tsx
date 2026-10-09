@@ -15,7 +15,7 @@ export default function EnergyPage() {
       <BackHome />
 
       <DetailIntro
-        icon={<EnergyIcon />}
+        icon={<EnergyIcon tile="light" size={72} />}
         title="Energy"
         subtitle="Powering the Future with Natural Logic"
         intro="We create renewable energy systems that combine solar, hybrid, and agrivoltaic solutions. Every system is connected, monitored, and optimized through real-time data — turning clean energy into smart energy."

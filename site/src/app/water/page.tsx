@@ -15,7 +15,7 @@ export default function WaterPage() {
       <BackHome />
 
       <DetailIntro
-        icon={<WaterIcon />}
+        icon={<WaterIcon tile="light" size={72} />}
         title="Water"
         subtitle="The Source of Life, Managed Intelligently"
         intro="Greecon designs automated systems for wastewater treatment and water reuse. Our technology helps cities and industries recycle water and reduce their environmental footprint."
