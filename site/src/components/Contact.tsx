@@ -27,7 +27,7 @@ export function Contact({ email }: { email: string }) {
           </div>
           <div>
             <dt>Location:</dt>
-            <dd>Tirana, Albania</dd>
+            <dd>Shijak, Durrës, Albania</dd>
           </div>
         </dl>
       </div>
@@ -41,7 +41,10 @@ export function SiteFooter() {
       <div className="wrap">
         <p>
           &copy; 2026 Greecon &mdash; All rights reserved. <Link href="/terms">Terms of service</Link>{" "}
-          <Link href="/privacy">Privacy notice</Link>
+          <Link href="/privacy">Privacy notice</Link>{" "}
+          <a href="https://blog.greecon.earth" target="_blank" rel="noreferrer">
+            Blog
+          </a>
         </p>
         <div className="social-links" aria-label="Social media">
           <a href="https://instagram.com/greecon.earth" aria-label="Instagram" target="_blank" rel="noreferrer">
