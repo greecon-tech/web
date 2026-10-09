@@ -17,10 +17,11 @@ export default function TermsPage() {
 
         <p>
           These Terms of Service (&ldquo;Terms&rdquo;) govern access to and use of the website published at
-          greecon.earth and its subdomains (the &ldquo;Site&rdquo;), operated by <strong>Greecon Sh.p.k.</strong>, a
-          company registered in Tirana, Albania (&ldquo;Greecon,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
-          &ldquo;our&rdquo;). By accessing or using the Site, you agree to be bound by these Terms. If you do not
-          agree, please do not use the Site.
+          greecon.earth and its subdomains (the &ldquo;Site&rdquo;), operated by <strong>Greecon Sh.p.k.</strong>{" "}
+          (NUIS/NIPT <strong>M61525505A</strong>), a company registered with the National Business Center of
+          Albania, with its registered office in Shijak, Durrës County, Albania (&ldquo;Greecon,&rdquo;
+          &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). By accessing or using the Site, you agree to be
+          bound by these Terms. If you do not agree, please do not use the Site.
         </p>
 
         <h2>1. About the Site</h2>
@@ -90,8 +91,8 @@ export default function TermsPage() {
         <p>
           These Terms are governed by the laws of the Republic of Albania, without regard to its conflict-of-law
           principles. Any dispute arising out of or relating to these Terms or the Site shall be subject to the
-          exclusive jurisdiction of the competent courts of Tirana, Albania, unless mandatory consumer-protection
-          law requires otherwise.
+          exclusive jurisdiction of the competent courts of the Republic of Albania, unless mandatory
+          consumer-protection law requires otherwise.
         </p>
 
         <h2>9. Changes to These Terms</h2>
@@ -104,7 +105,8 @@ export default function TermsPage() {
         <h2>10. Contact</h2>
         <p>
           Questions about these Terms can be sent to{" "}
-          <a href="mailto:info@greecon.earth">info@greecon.earth</a> or by post to Greecon Sh.p.k., Tirana, Albania.
+          <a href="mailto:info@greecon.earth">info@greecon.earth</a> or by post to Greecon Sh.p.k., Durana Tech
+          Park, Rruga Ahmet Zogu, Xhafzotaj, Shijak, Durrës 2013, Albania.
         </p>
       </div>
       <SiteFooter />

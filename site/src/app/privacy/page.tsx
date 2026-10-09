@@ -16,10 +16,12 @@ export default function PrivacyPage() {
         <p className="legal-updated">Last updated: October 2026</p>
 
         <p>
-          This Privacy Notice explains how <strong>Greecon Sh.p.k.</strong> (&ldquo;Greecon,&rdquo; &ldquo;we,&rdquo;
-          &ldquo;us,&rdquo; or &ldquo;our&rdquo;), a company established in Tirana, Albania, collects and uses
-          personal data when you visit greecon.earth (the &ldquo;Site&rdquo;) or contact us through it. Greecon is
-          the data controller for the personal data described below.
+          This Privacy Notice explains how <strong>Greecon Sh.p.k.</strong> (NUIS/NIPT{" "}
+          <strong>M61525505A</strong>) (&ldquo;Greecon,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+          &ldquo;our&rdquo;), a company registered with the National Business Center of Albania with its
+          registered office in Shijak, Durrës County, Albania, collects and uses personal data when you visit
+          greecon.earth (the &ldquo;Site&rdquo;) or contact us through it. Greecon is the data controller for the
+          personal data described below.
         </p>
         <p>
           We handle personal data in line with Albania&rsquo;s Law No. 124/2024 &ldquo;On the Protection of Personal
@@ -126,7 +128,8 @@ export default function PrivacyPage() {
         <h2>11. Contact</h2>
         <p>
           For any question about this notice or how we handle your data, contact{" "}
-          <a href="mailto:privacy@greecon.earth">privacy@greecon.earth</a> or Greecon Sh.p.k., Tirana, Albania.
+          <a href="mailto:privacy@greecon.earth">privacy@greecon.earth</a> or Greecon Sh.p.k., Durana Tech Park,
+          Rruga Ahmet Zogu, Xhafzotaj, Shijak, Durrës 2013, Albania.
         </p>
       </div>
       <SiteFooter />
