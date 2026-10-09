@@ -15,7 +15,7 @@ export default function AgriculturePage() {
       <BackHome />
 
       <DetailIntro
-        icon={<AgricultureIcon />}
+        icon={<AgricultureIcon tile="light" size={72} />}
         title="Agriculture"
         subtitle="Intelligence Rooted in the Earth"
         intro="Our smart agriculture systems use IoT sensors to monitor soil, water, and weather conditions. Farmers get clear insights that help reduce waste, improve yields, and save resources — building a new generation of connected, efficient farms."

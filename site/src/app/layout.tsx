@@ -10,9 +10,8 @@ const plexSerif = IBM_Plex_Serif({
   display: "swap"
 });
 
-const title = "Greecon — Nature and Technology in Harmony";
-const description =
-  "Greecon brings together renewable energy, smart agriculture, and water management into one intelligent ecosystem powered by IoT and SCADA technology.";
+const title = "Greecon — Building Enduring Intelligence for Energy, Water, and Agriculture";
+const description = "Building enduring intelligence for energy, water, and agriculture.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://greecon.earth"),
@@ -44,13 +43,13 @@ export const metadata: Metadata = {
     siteName: "Greecon",
     url: "https://greecon.earth",
     locale: "en_US",
-    images: [{ url: "/greecon-mark.svg" }]
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Greecon" }]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title,
     description,
-    images: ["/greecon-mark.svg"]
+    images: ["/og-image.png"]
   }
 };
 
