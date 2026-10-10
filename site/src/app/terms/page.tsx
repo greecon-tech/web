@@ -41,7 +41,7 @@ export default function TermsPage() {
         <ul>
           <li>Attempt to gain unauthorized access to the Site, its underlying systems, or related networks;</li>
           <li>Interfere with or disrupt the Site&rsquo;s operation, including through excessive automated requests;</li>
-          <li>Submit false, misleading, or fraudulent information through the Site&rsquo;s contact or waitlist forms;</li>
+          <li>Submit false, misleading, or fraudulent information through the Site&rsquo;s contact channels;</li>
           <li>Reproduce, duplicate, copy, or resell any part of the Site without our prior written consent.</li>
         </ul>
 
@@ -54,11 +54,10 @@ export default function TermsPage() {
           permission.
         </p>
 
-        <h2>4. Waitlist and Communications</h2>
+        <h2>4. Communications</h2>
         <p>
-          If you submit your email address to join the Greecon waitlist or otherwise contact us through the Site, we
-          will use it to respond to your inquiry and, where you have opted in, to send you updates about the Greecon
-          Platform. You can ask us to stop these communications at any time by emailing{" "}
+          If you contact us through the Site, we will use the details you provide to respond to your inquiry and,
+          where you have opted in, to send you updates about the Greecon Platform. You can ask us to stop these communications at any time by emailing{" "}
           <a href="mailto:info@greecon.earth">info@greecon.earth</a>. See our{" "}
           <a href="/privacy/">Privacy Notice</a> for details on how we handle personal data.
         </p>

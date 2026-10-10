@@ -33,9 +33,9 @@ export default function PrivacyPage() {
         <p>We collect only what is necessary to run the Site and respond to you:</p>
         <ul>
           <li>
-            <strong>Contact and waitlist data</strong> you provide directly &mdash; such as your name, email
-            address, and the content of any message &mdash; when you use a contact channel, email address, or the
-            waitlist form on the Site.
+            <strong>Contact data</strong> you provide directly &mdash; such as your name, email
+            address, and the content of any message &mdash; when you use a contact channel or email address on the
+            Site.
           </li>
           <li>
             <strong>Technical data</strong> collected automatically by our hosting providers to operate and secure
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
         <h2>3. How We Use Your Data and Our Legal Basis</h2>
         <ul>
           <li><strong>To respond to inquiries</strong> you send us, based on our legitimate interest in communicating with prospective partners, clients, and investors, or to take steps at your request before entering into a contract.</li>
-          <li><strong>To send waitlist and product updates</strong> you have opted in to receive, based on your consent, which you may withdraw at any time.</li>
+          <li><strong>To send product updates</strong> you have opted in to receive, based on your consent, which you may withdraw at any time.</li>
           <li><strong>To maintain and secure the Site</strong>, based on our legitimate interest in keeping our systems reliable and protected from misuse.</li>
           <li><strong>To comply with legal obligations</strong>, such as responding to a lawful request from a competent authority.</li>
         </ul>
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
 
         <h2>6. Data Retention</h2>
         <p>
-          We retain contact and waitlist data for as long as needed to respond to your inquiry, maintain our
+          We retain contact data for as long as needed to respond to your inquiry, maintain our
           business relationship, or until you withdraw consent or ask us to delete it, whichever comes first,
           subject to any longer retention period required by law. Standard technical and security logs are
           typically retained for a limited period by our hosting providers and then rotated out automatically.
