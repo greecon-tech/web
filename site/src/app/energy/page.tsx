@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { BlogTeaser } from "../../components/BlogTeaser";
 import { JsonLd } from "../../components/JsonLd";
+import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
@@ -8,7 +10,9 @@ import { EnergyIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("energy");
 
-export default function EnergyPage() {
+export default async function EnergyPage() {
+  const relatedPosts = await getPostsByCategory("Energy", 3);
+
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("energy")} />
@@ -102,6 +106,8 @@ export default function EnergyPage() {
           ]}
         />
       </div>
+
+      <BlogTeaser id="energy-blog-heading" posts={relatedPosts} />
 
       <BlogCta sector="energy" topic="energy" />
 

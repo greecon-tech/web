@@ -4,6 +4,7 @@ export const SITE_URL = "https://greecon.earth";
 export const SITE_NAME = "Greecon";
 export const SITE_TAGLINE = "Building Enduring Intelligence for Energy, Water, and Agriculture";
 export const PLATFORM_URL = "https://app.greecon.earth";
+export const BLOG_URL = "https://blog.greecon.earth";
 
 export const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Greecon" };
 
@@ -14,6 +15,7 @@ export const ORG = {
   taxId: "M61525505A",
   email: "info@greecon.earth",
   telephone: "+355694443362",
+  telephoneDisplay: "+355 69 444 3362",
   address: {
     streetAddress: "Durana Tech Park, Rruga Ahmet Zogu, Xhafzotaj",
     addressLocality: "Shijak",
@@ -24,7 +26,7 @@ export const ORG = {
   sameAs: [
     "https://linkedin.com/company/greecon",
     "https://instagram.com/greecon.earth",
-    "https://blog.greecon.earth",
+    BLOG_URL,
     PLATFORM_URL
   ]
 } as const;

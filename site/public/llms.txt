@@ -19,6 +19,8 @@ Greecon works with communities, farmers, municipalities, businesses, and investo
 ## Company
 
 - [Home](https://greecon.earth/): Mission, impact, partnerships, and contact details.
-- [Blog](https://blog.greecon.earth): News and articles from Greecon.
+- [Greecon Blog](https://blog.greecon.earth): Articles on energy, agriculture, water, and the Greecon Platform, plus project pages.
+- [All articles](https://blog.greecon.earth/blog): Every article, filterable by sector (energy, agriculture, water, platform).
+- [Projects](https://blog.greecon.earth/projects): Planned and current Greecon projects in Albania.
 - [Terms of Service](https://greecon.earth/terms/)
 - [Privacy Notice](https://greecon.earth/privacy/)

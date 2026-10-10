@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { BlogTeaser } from "../../components/BlogTeaser";
 import { JsonLd } from "../../components/JsonLd";
+import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph, platformNode, processList } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import Link from "next/link";
@@ -37,7 +39,9 @@ const steps = [
   }
 ];
 
-export default function TechnologyPage() {
+export default async function TechnologyPage() {
+  const relatedPosts = await getPostsByCategory("Platform", 3);
+
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("technology", [platformNode(), processList(steps)])} />
@@ -89,6 +93,8 @@ export default function TechnologyPage() {
       <p className="tech-cta wrap">
         <Link href="/gaia">Powered by GAIA Tech →</Link>
       </p>
+      <BlogTeaser id="technology-blog-heading" posts={relatedPosts} />
+
       <BlogCta sector="platform" topic="technology and process" />
 
       <Contact email="info@greecon.earth" />

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { BlogTeaser } from "../../components/BlogTeaser";
 import { JsonLd } from "../../components/JsonLd";
+import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
@@ -8,7 +10,9 @@ import { AgricultureIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("agriculture");
 
-export default function AgriculturePage() {
+export default async function AgriculturePage() {
+  const relatedPosts = await getPostsByCategory("Agriculture", 3);
+
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("agriculture")} />
@@ -115,6 +119,8 @@ export default function AgriculturePage() {
           ]}
         />
       </div>
+
+      <BlogTeaser id="agriculture-blog-heading" posts={relatedPosts} />
 
       <BlogCta sector="agriculture" topic="agriculture" />
 

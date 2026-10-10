@@ -91,6 +91,18 @@ All search-related metadata for `site/` lives in one place so pages can't drift 
 - `site/src/app/sitemap.ts`, `robots.ts`, `manifest.ts` and `site/public/llms.txt` — crawler-facing files. Sitemap dates come from `lastModified` in `seo.ts`, so **bump that date when a page's content changes**.
 - `site/public/serve.json` — redirects `/page` to `/page/`, and sets cache and security headers on Railway. The start command is `serve out` (not `serve -s`): single-page-app mode would return the home page for every URL and a 200 for unknown paths.
 
-When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) and to `public/llms.txt`.
+When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) to `public/llms.txt`, and to the `links` list in `site/src/components/SiteHeader.tsx` (the phone/tablet menu).
 
 Any text that describes how the site handles personal data (`/privacy`, `/terms`) must be kept in line with what the site actually does — for example, if a signup form or analytics is added, update both pages first.
+
+### Greecon Blog integration (`blog.greecon.earth`)
+
+The blog is a separate Next.js site (repo `greecontech/blog`). The website connects to it in four ways:
+
+- **Links:** the footer, the phone/tablet menu, and a "More on … on the Greecon Blog" link on each sector page (`BlogCta` in `DetailPage.tsx`, which uses the blog's `?sector=` filter). All open in the same tab. The shared URL is `BLOG_URL` in `site/src/lib/seo.ts`.
+- **Latest articles on the home page, and related articles on the Energy, Agriculture, Water and Technology pages** (`BlogTeaser`). `site/src/lib/blog.ts` reads the blog's public `sitemap.xml`, then each article's `BlogPosting` JSON-LD (headline, description, date, category). Categories map to pages: Energy → Energy, Agriculture → Agriculture, Water → Water, Platform → Technology & Process.
+- **Structured data:** the home page's JSON-LD includes the `Blog` and the featured `BlogPosting`s, linked to the Greecon organization.
+- **Privacy:** the Privacy Notice names the blog as part of the Site. The blog sets no cookies and loads no third-party scripts; keep it that way, or update the notice first.
+
+Because the website is a static export, article lists are read **at build time**. After publishing a new article, redeploy the website (Railway → the `site` service → **Redeploy**) for it to appear here. If the blog is unreachable during a build, the build still succeeds and the article sections are simply left out. Automating the redeploy (for example, a GitHub Action in the blog repo that calls Railway when an article is published) needs a Railway API token stored as a secret.
+

@@ -3,17 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../components/Contact";
 import { AgricultureIcon, EnergyIcon, GreeconMark, WaterIcon } from "../components/icons";
+import { BlogTeaser } from "../components/BlogTeaser";
 import { JsonLd } from "../components/JsonLd";
 import { ProductCard } from "../components/ProductCard";
-import { pageGraph, platformNode } from "../lib/schema";
+import { getLatestPosts } from "../lib/blog";
+import { blogNode, pageGraph, platformNode } from "../lib/schema";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata("home");
 
-export default function HomePage() {
+export default async function HomePage() {
+  const latestPosts = await getLatestPosts(3);
+
   return (
     <main>
-      <JsonLd data={pageGraph("home", [platformNode()])} />
+      <JsonLd data={pageGraph("home", [platformNode(), blogNode(latestPosts)])} />
       <h1 className="site-mark">
         <Link href="/" aria-label="Greecon">
           <GreeconMark size={56} />
@@ -126,6 +130,8 @@ export default function HomePage() {
           people and the planet.
         </p>
       </section>
+
+      <BlogTeaser id="home-blog-heading" posts={latestPosts} showAll />
 
       <Contact email="info@greecon.earth" />
       <SiteFooter />

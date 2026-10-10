@@ -19,6 +19,10 @@
   --shadow-sm: 0 2px 8px rgba(26, 33, 29, 0.12);
   --shadow-md: 0 14px 28px rgba(26, 33, 29, 0.18);
   --radius-lg: 24px;
+  --gutter: 28px;
+  --pad-l: max(var(--gutter), env(safe-area-inset-left));
+  --pad-r: max(var(--gutter), env(safe-area-inset-right));
+  --header-h: 56px;
   font-family: var(--font-plex-serif), "IBM Plex Serif", Georgia, "Times New Roman", serif;
 }
 
@@ -37,6 +41,8 @@ input:focus-visible,
 html {
   min-height: 100%;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -51,6 +57,12 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button {
+  touch-action: manipulation;
 }
 
 img {
@@ -61,7 +73,7 @@ img {
 .wrap {
   width: min(920px, 100%);
   margin: 0 auto;
-  padding: 0 28px;
+  padding: 0 var(--pad-r) 0 var(--pad-l);
 }
 
 .wrap--wide {
@@ -95,6 +107,11 @@ h3 {
 }
 
 /* ---------- Site header (home) ---------- */
+
+/* Mobile / tablet header (shown below 861px, see Responsive). */
+.site-header {
+  display: none;
+}
 
 .site-mark {
   margin: 0;
@@ -235,7 +252,8 @@ h3 {
   border-radius: 999px;
 }
 
-.platform-link.platform-link--primary:hover {
+.platform-link.platform-link--primary:hover,
+.platform-link.platform-link--primary:active {
   background: var(--near-black-green);
 }
 
@@ -335,12 +353,12 @@ h3 {
 
 .site-footer .wrap {
   display: flex;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
   padding-top: 16px;
-  padding-bottom: 16px;
   font-size: 0.86rem;
 }
 
@@ -384,7 +402,7 @@ h3 {
 
 .detail-intro {
   text-align: center;
-  padding: 0 28px 30px;
+  padding: 0 var(--pad-r) 30px var(--pad-l);
 }
 
 .detail-icon {
@@ -512,7 +530,7 @@ h3 {
 
 .gaia-hero {
   text-align: center;
-  padding: 0 28px 30px;
+  padding: 0 var(--pad-r) 30px var(--pad-l);
 }
 
 .gaia-hero__mark {
@@ -727,45 +745,381 @@ main:has(> .not-found) {
   color: var(--near-black-green);
 }
 
+/* ---------- Blog teaser ---------- */
+
+.blog-teaser {
+  padding: 32px 0 8px;
+}
+
+.blog-teaser__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 24px;
+  margin-bottom: 18px;
+}
+
+.blog-teaser h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.blog-teaser__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(232, 224, 211, 0.35);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.blog-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--deep-green-gray);
+}
+
+.blog-card__category {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-text);
+}
+
+.blog-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+/* The whole card is the click target; the title link stretches over it. */
+.blog-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.blog-card h3 a:focus-visible {
+  outline: none;
+}
+
+.blog-card:has(a:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.blog-card__summary {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--deep-green-gray);
+}
+
+.blog-card__more {
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.blog-card:active {
+  background: var(--surface);
+}
+
+@media (hover: hover) {
+  .blog-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
 /* ---------- Responsive ---------- */
 
+/* Sections that set their own vertical padding must still keep the page gutter once the viewport is narrower
+   than the 920px column plus gutters; otherwise their text runs flush to the screen edge. */
+@media (max-width: 975px) {
+  .hero,
+  .product-grid,
+  .platform,
+  .statement,
+  .tech-intro,
+  .tech-steps,
+  .tech-cta,
+  .detail-body,
+  .gaia-body,
+  .legal-page,
+  .blog-teaser,
+  .not-found {
+    padding-left: var(--pad-l);
+    padding-right: var(--pad-r);
+  }
+}
+
+/* Phones and tablets: single column, plus the sticky header and full-screen menu. */
 @media (max-width: 860px) {
-  .product-grid {
+  .product-grid,
+  .platform,
+  .blog-teaser__list {
     grid-template-columns: 1fr;
   }
 
-  .platform {
-    grid-template-columns: 1fr;
+  .back-home {
+    display: none;
   }
 
+  .site-header {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-top: env(safe-area-inset-top);
+    background: var(--warm-background);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-header__bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-h);
+    padding: 0 var(--pad-r) 0 var(--pad-l);
+    background: var(--warm-background);
+  }
+
+  .site-header__logo {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    color: var(--living-green);
+  }
+
+  .site-header__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--deep-green-gray);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .site-header__toggle:active {
+    background: var(--surface);
+  }
+
+  .site-header__icon {
+    position: relative;
+    width: 18px;
+    height: 12px;
+  }
+
+  .site-header__icon i {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease, top 0.2s ease;
+  }
+
+  .site-header__icon i:first-child {
+    top: 1px;
+  }
+
+  .site-header__icon i:last-child {
+    top: 9px;
+  }
+
+  .site-header__icon[data-open="true"] i {
+    top: 5px;
+  }
+
+  .site-header__icon[data-open="true"] i:first-child {
+    transform: rotate(45deg);
+  }
+
+  .site-header__icon[data-open="true"] i:last-child {
+    transform: rotate(-45deg);
+  }
+
+  .site-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: calc(var(--header-h) + env(safe-area-inset-top) + 12px) var(--pad-r)
+      calc(28px + env(safe-area-inset-bottom)) var(--pad-l);
+    background: var(--warm-background);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .site-menu[hidden] {
+    display: none;
+  }
+
+  .site-menu__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-menu__list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--near-black-green);
+  }
+
+  .site-menu__list a:active {
+    background: var(--surface);
+  }
+
+  .site-menu__list a[aria-current="page"] {
+    color: var(--accent-text);
+  }
+
+  .site-menu__list a[aria-current="page"]::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--living-green);
+  }
+
+  .site-menu__cta,
+  .site-menu__contact a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  .site-menu__cta {
+    min-height: 52px;
+    background: var(--action);
+    color: var(--on-action);
+  }
+
+  .site-menu__cta:active {
+    background: var(--near-black-green);
+  }
+
+  .site-menu__contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .site-menu__contact a {
+    min-height: 48px;
+    border: 1px solid var(--line);
+    color: var(--deep-green-gray);
+  }
+
+  .site-menu__contact a:active {
+    background: var(--surface);
+  }
+
+  /* The header now carries the way home, so the pages need less top space. */
+  .site-mark {
+    padding: 20px 0 28px;
+  }
+
+  .detail-page {
+    padding-top: 12px;
+  }
+
+  .legal-page {
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 860px) and (hover: none) {
+  .product-card:active {
+    transform: scale(0.985);
+  }
+}
+
+/* Landscape phones: keep the bar, but slimmer. */
+@media (max-width: 860px) and (max-height: 500px) {
+  :root {
+    --header-h: 48px;
+  }
 }
 
 @media (max-width: 560px) {
-  .wrap {
-    padding: 0 20px;
+  :root {
+    --gutter: 20px;
   }
 
   body {
     font-size: 16px;
   }
 
-  .back-home {
-    top: 8px;
-    left: 8px;
-  }
-
-  .site-mark {
-    padding: 36px 0 28px;
-  }
-
   .hero {
-    padding-bottom: 40px;
+    padding-bottom: 36px;
+  }
+
+  /* Long centered paragraphs are hard to read on a narrow screen; left-align them. */
+  .hero p,
+  .statement {
+    text-align: left;
+  }
+
+  .hero p,
+  .statement p,
+  .tech-steps p,
+  .detail-section p {
+    text-wrap: pretty;
+  }
+
+  .statement p {
+    margin: 0;
   }
 
   .product-grid,
   .platform,
   .statement {
-    padding: 28px 0;
+    padding-top: 28px;
+    padding-bottom: 28px;
   }
 
   .product-card {
@@ -774,11 +1128,6 @@ main:has(> .not-found) {
 
   .statement h2 {
     font-size: 1.3rem;
-  }
-
-  .detail-intro,
-  .gaia-hero {
-    padding: 0 20px 24px;
   }
 
   .detail-intro h1,
@@ -799,8 +1148,17 @@ main:has(> .not-found) {
     font-size: 2.4rem;
   }
 
-  .legal-page {
-    padding-top: 56px;
+  .process-diagram {
+    padding-top: 8px;
+  }
+
+  .process-diagram__image {
+    width: min(300px, 78%);
+  }
+
+  .tech-intro {
+    padding-top: 8px;
+    padding-bottom: 32px;
   }
 
   .legal-page h1 {
