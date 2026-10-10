@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Serif } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "../components/JsonLd";
+import { SiteHeader } from "../components/SiteHeader";
 import { siteGraph } from "../lib/schema";
 import { OG_IMAGE, PAGES, SITE_NAME, SITE_URL } from "../lib/seo";
 
@@ -16,6 +17,7 @@ const plexSerif = IBM_Plex_Serif({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#f7f1e9"
 };
 
@@ -89,6 +91,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={plexSerif.variable}>
       <body>
         <JsonLd data={siteGraph()} />
+        <SiteHeader />
         {children}
       </body>
     </html>

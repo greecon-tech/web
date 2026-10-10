@@ -91,6 +91,6 @@ All search-related metadata for `site/` lives in one place so pages can't drift 
 - `site/src/app/sitemap.ts`, `robots.ts`, `manifest.ts` and `site/public/llms.txt` — crawler-facing files. Sitemap dates come from `lastModified` in `seo.ts`, so **bump that date when a page's content changes**.
 - `site/public/serve.json` — redirects `/page` to `/page/`, and sets cache and security headers on Railway. The start command is `serve out` (not `serve -s`): single-page-app mode would return the home page for every URL and a 200 for unknown paths.
 
-When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) and to `public/llms.txt`.
+When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) to `public/llms.txt`, and to the `links` list in `site/src/components/SiteHeader.tsx` (the phone/tablet menu).
 
 Any text that describes how the site handles personal data (`/privacy`, `/terms`) must be kept in line with what the site actually does — for example, if a signup form or analytics is added, update both pages first.
