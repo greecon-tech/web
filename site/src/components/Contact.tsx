@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BLOG_URL } from "../lib/seo";
 import { InstagramIcon, LinkedInIcon } from "./icons";
 
 export function Contact({ email }: { email: string }) {
@@ -42,9 +43,7 @@ export function SiteFooter() {
         <p>
           &copy; 2026 Greecon Sh.p.k. &mdash; All rights reserved. <Link href="/terms">Terms of service</Link>{" "}
           <Link href="/privacy">Privacy notice</Link>{" "}
-          <a href="https://blog.greecon.earth" target="_blank" rel="noreferrer">
-            Blog
-          </a>
+          <a href={BLOG_URL}>Blog</a>
         </p>
         <div className="social-links" aria-label="Social media">
           <a href="https://instagram.com/greecon.earth" aria-label="Instagram" target="_blank" rel="noreferrer">

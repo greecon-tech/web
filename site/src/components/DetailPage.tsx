@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { BLOG_URL } from "../lib/seo";
 import { BackArrowIcon, GreeconMark } from "./icons";
 
 export function BackHome() {
@@ -56,13 +57,12 @@ export function Philosophy({ title, lines }: { title: string; lines: ReactNode[]
   );
 }
 
-const BLOG_URL = "https://blog.greecon.earth";
 
 /** Link from a detail page to the matching sector filter on the Greecon Blog. */
 export function BlogCta({ sector, topic }: { sector: "energy" | "agriculture" | "water" | "platform"; topic: string }) {
   return (
     <p className="tech-cta wrap">
-      <a href={`${BLOG_URL}/blog?sector=${sector}`} target="_blank" rel="noreferrer">
+      <a href={`${BLOG_URL}/blog?sector=${sector}`}>
         More on {topic} on the Greecon Blog →
       </a>
     </p>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { BlogTeaser } from "../../components/BlogTeaser";
 import { JsonLd } from "../../components/JsonLd";
+import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
@@ -8,7 +10,9 @@ import { WaterIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("water");
 
-export default function WaterPage() {
+export default async function WaterPage() {
+  const relatedPosts = await getPostsByCategory("Water", 3);
+
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("water")} />
@@ -104,6 +108,8 @@ export default function WaterPage() {
           ]}
         />
       </div>
+
+      <BlogTeaser id="water-blog-heading" posts={relatedPosts} />
 
       <BlogCta sector="water" topic="water" />
 

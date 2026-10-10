@@ -1,4 +1,5 @@
-import { ORG, OG_IMAGE, PAGES, PLATFORM_URL, SITE_NAME, SITE_TAGLINE, SITE_URL, pageUrl, type PageKey } from "./seo";
+import type { BlogPost } from "./blog";
+import { BLOG_URL, ORG, OG_IMAGE, PAGES, PLATFORM_URL, SITE_NAME, SITE_TAGLINE, SITE_URL, pageUrl, type PageKey } from "./seo";
 
 const abs = (path: string) => `${SITE_URL}${path}`;
 
@@ -128,6 +129,32 @@ export function gaiaNode() {
     operatingSystem: "Web",
     isPartOf: { "@id": ids.platform },
     publisher: { "@id": ids.org }
+  };
+}
+
+/** The Greecon Blog, with the articles currently featured on the page. */
+export function blogNode(posts: ReadonlyArray<BlogPost>) {
+  return {
+    "@type": "Blog",
+    "@id": `${BLOG_URL}/#blog`,
+    name: "Greecon Blog",
+    url: `${BLOG_URL}/`,
+    description:
+      "Stories, insights, and projects from Greecon — renewable energy, smart agriculture, and water management powered by IoT and SCADA.",
+    inLanguage: "en",
+    publisher: { "@id": ids.org },
+    ...(posts.length
+      ? {
+          blogPost: posts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.title,
+            url: post.url,
+            datePublished: post.date,
+            ...(post.description ? { description: post.description } : {}),
+            ...(post.category ? { articleSection: post.category } : {})
+          }))
+        }
+      : {})
   };
 }
 

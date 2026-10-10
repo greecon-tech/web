@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { PLATFORM_URL, ORG } from "../lib/seo";
+import { BLOG_URL, PLATFORM_URL, ORG } from "../lib/seo";
 import { GreeconMark } from "./icons";
 
 const links = [
@@ -14,6 +14,9 @@ const links = [
   { href: "/technology/", label: "Technology & Process" },
   { href: "/gaia/", label: "GAIA Tech" }
 ];
+
+// The blog is a separate site on a subdomain, so it is a plain link rather than a client-side route.
+const blogLink = { href: BLOG_URL, label: "Blog" };
 
 const trim = (path: string) => path.replace(/\/+$/, "") || "/";
 
@@ -90,6 +93,9 @@ export function SiteHeader() {
               </Link>
             </li>
           ))}
+          <li>
+            <a href={blogLink.href}>{blogLink.label}</a>
+          </li>
         </ul>
         <a className="site-menu__cta" href={PLATFORM_URL} target="_blank" rel="noreferrer">
           Open the Platform →

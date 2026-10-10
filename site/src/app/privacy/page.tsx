@@ -21,7 +21,8 @@ export default function PrivacyPage() {
           <strong>M61525505A</strong>) (&ldquo;Greecon,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
           &ldquo;our&rdquo;), a company registered with the National Business Center of Albania with its
           registered office in Shijak, Durrës County, Albania, collects and uses personal data when you visit
-          greecon.earth (the &ldquo;Site&rdquo;) or contact us through it. Greecon is the data controller for the
+          greecon.earth or the Greecon Blog at blog.greecon.earth (together, the &ldquo;Site&rdquo;) or contact us
+          through it. Greecon is the data controller for the
           personal data described below.
         </p>
         <p>
