@@ -81,3 +81,16 @@ To serve it from a custom domain (e.g. `greecon.earth`) instead of the `/‹repo
 3. Deploy. Railway assigns a `*.up.railway.app` URL by default; add `greecon.earth` under **Settings → Networking → Custom Domain** when ready, and point its DNS per Railway's instructions.
 
 No `NEXT_BASE_PATH` is needed for Railway — it serves from the domain root, unlike the GitHub Pages `/‹repo›/` sub-path above.
+
+### SEO, answer engines, and site metadata
+
+All search-related metadata for `site/` lives in one place so pages can't drift apart:
+
+- `site/src/lib/seo.ts` — per-page title, meta description, canonical path, social-card text, breadcrumb label and `lastModified` date, plus the company facts (legal name, address, contact, social profiles). Pages call `pageMetadata("<key>")`.
+- `site/src/lib/schema.ts` — the JSON-LD graph (Organization, WebSite, WebPage, BreadcrumbList, Service, software entities). The site-wide part renders in `layout.tsx`; each page adds its own via `<JsonLd data={pageGraph(...)} />`.
+- `site/src/app/sitemap.ts`, `robots.ts`, `manifest.ts` and `site/public/llms.txt` — crawler-facing files. Sitemap dates come from `lastModified` in `seo.ts`, so **bump that date when a page's content changes**.
+- `site/public/serve.json` — redirects `/page` to `/page/`, and sets cache and security headers on Railway. The start command is `serve out` (not `serve -s`): single-page-app mode would return the home page for every URL and a 200 for unknown paths.
+
+When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) and to `public/llms.txt`.
+
+Any text that describes how the site handles personal data (`/privacy`, `/terms`) must be kept in line with what the site actually does — for example, if a signup form or analytics is added, update both pages first.

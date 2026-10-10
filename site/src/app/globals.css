@@ -170,7 +170,7 @@ h3 {
   height: 100%;
 }
 
-.product-card h3 {
+.product-card__title {
   text-transform: uppercase;
   letter-spacing: 0.03em;
   font-size: 1.15rem;
@@ -634,6 +634,54 @@ h3 {
   font-style: italic;
 }
 
+/* ---------- Not found ---------- */
+
+main:has(> .not-found) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.not-found {
+  flex: 1;
+  align-content: center;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 40px 0 72px;
+  color: var(--living-green);
+}
+
+.not-found h1 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--deep-green-gray);
+}
+
+.not-found p {
+  margin: 0;
+  color: var(--deep-green-gray);
+}
+
+.not-found__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 22px;
+  margin-top: 10px;
+}
+
+.not-found__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent-text);
+  font-weight: 600;
+  font-style: italic;
+}
+
 /* ---------- Legal pages ---------- */
 
 .legal-page {
@@ -796,5 +844,25 @@ h3 {
     width: 44px;
     height: 44px;
     margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .product-card:hover,
+  .product-card:focus-visible,
+  .platform-shot:hover,
+  .platform-shot:focus-visible {
+    transform: none;
   }
 }
