@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Contact, SiteFooter } from "../components/Contact";
 import { AgricultureIcon, EnergyIcon, GreeconMark, WaterIcon } from "../components/icons";
 import { ProductCard } from "../components/ProductCard";
-import { WaitlistForm } from "../components/WaitlistForm";
 
 export default function HomePage() {
   return (
@@ -119,13 +118,6 @@ export default function HomePage() {
           these systems, we transform sustainability from an idea into a living reality — one that supports both
           people and the planet.
         </p>
-      </section>
-
-      <section className="cta">
-        <div className="cta__panel">
-          <h2>Be the First to Experience Nature and Technology in Harmony</h2>
-          <WaitlistForm />
-        </div>
       </section>
 
       <Contact email="info@greecon.earth" />
