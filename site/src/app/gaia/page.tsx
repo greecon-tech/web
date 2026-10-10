@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph, gaiaNode } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
 import { BackHome, ReturnMark } from "../../components/DetailPage";
 import { GaiaMark } from "../../components/icons";
 
-export const metadata: Metadata = {
-  title: "GAIA Tech — Greecon",
-  description:
-    "GAIA Tech is the proprietary intelligence inside the Greecon Platform — the core system that turns connected infrastructure into one coordinated ecosystem."
-};
+export const metadata: Metadata = pageMetadata("gaia");
 
 export default function GaiaPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("gaia", [gaiaNode()])} />
       <BackHome />
 
       <header className="gaia-hero">
         <div className="gaia-hero__mark">
           <GaiaMark size={100} className="gaia-hero__icon" />
-          <div className="gaia-hero__wordmark">
+          <h1 className="gaia-hero__wordmark">
             <span>GAIA</span>
             <small>TECH</small>
-          </div>
+          </h1>
         </div>
         <div className="detail-lede">
           <p>

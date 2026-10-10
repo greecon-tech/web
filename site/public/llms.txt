@@ -1,0 +1,24 @@
+# Greecon
+
+> Greecon (Greecon Sh.p.k.) is an Albanian company, based in Shijak, Durrës, that brings renewable energy, smart agriculture, and water management together in one intelligent ecosystem powered by IoT and SCADA technologies. Its Greecon Platform is a unified SCADA-based system that connects devices, sensors, and data into one dashboard to monitor, automate, and optimize operations in real time.
+
+Greecon works with communities, farmers, municipalities, businesses, and investors. Contact: info@greecon.earth, +355 69 444 3362.
+
+## Business lines
+
+- [Energy](https://greecon.earth/energy/): Solar, hybrid, and agrivoltaic energy systems with battery storage, connected, monitored, and optimized in real time.
+- [Agriculture](https://greecon.earth/agriculture/): Smart agriculture systems that use IoT sensors to monitor soil, water, and weather conditions for connected, efficient farms.
+- [Water](https://greecon.earth/water/): Automated systems for wastewater treatment and water reuse for cities and industries.
+
+## Platform and technology
+
+- [Technology & Process](https://greecon.earth/technology/): How Greecon deploys smart systems, connects them through IoT, analyzes live data in one SCADA platform, and automates and scales operations.
+- [GAIA Tech](https://greecon.earth/gaia/): The proprietary intelligence inside the Greecon Platform, the core system that turns connected infrastructure into one coordinated ecosystem.
+- [Greecon Platform](https://app.greecon.earth): The operator interface for the platform.
+
+## Company
+
+- [Home](https://greecon.earth/): Mission, impact, partnerships, and contact details.
+- [Blog](https://blog.greecon.earth): News and articles from Greecon.
+- [Terms of Service](https://greecon.earth/terms/)
+- [Privacy Notice](https://greecon.earth/privacy/)

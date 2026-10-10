@@ -16,7 +16,7 @@ export function ProductCard({
   return (
     <Link href={href} className="product-card">
       <span className="product-card__icon">{icon}</span>
-      <h3>{title}</h3>
+      <h2 className="product-card__title">{title}</h2>
       <p>{children}</p>
       <ArrowIcon className="product-card__arrow" />
     </Link>

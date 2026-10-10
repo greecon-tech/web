@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
 import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { AgricultureIcon } from "../../components/icons";
 
-export const metadata: Metadata = {
-  title: "Agriculture — Greecon",
-  description:
-    "Greecon's smart agriculture systems use IoT sensors to monitor soil, water, and weather conditions for a new generation of connected, efficient farms."
-};
+export const metadata: Metadata = pageMetadata("agriculture");
 
 export default function AgriculturePage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("agriculture")} />
       <BackHome />
 
       <DetailIntro

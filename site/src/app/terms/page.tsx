@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { SiteFooter } from "../../components/Contact";
 import { BackHome } from "../../components/DetailPage";
 
-export const metadata: Metadata = {
-  title: "Terms of Service — Greecon",
-  description: "The terms that govern use of the Greecon website and the information published on it."
-};
+export const metadata: Metadata = pageMetadata("terms");
 
 export default function TermsPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("terms")} />
       <BackHome />
       <div className="legal-page wrap">
         <h1>Terms of Service</h1>
@@ -56,10 +58,8 @@ export default function TermsPage() {
 
         <h2>4. Communications</h2>
         <p>
-          If you contact us through the Site, we will use the details you provide to respond to your inquiry and,
-          where you have opted in, to send you updates about the Greecon Platform. You can ask us to stop these communications at any time by emailing{" "}
-          <a href="mailto:info@greecon.earth">info@greecon.earth</a>. See our{" "}
-          <a href="/privacy/">Privacy Notice</a> for details on how we handle personal data.
+          If you contact us through the Site, we will use the details you provide to respond to your inquiry. See our{" "}
+          <Link href="/privacy">Privacy Notice</Link> for details on how we handle personal data.
         </p>
 
         <h2>5. Third-Party Links</h2>

@@ -40,7 +40,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="wrap">
         <p>
-          &copy; 2026 Greecon &mdash; All rights reserved. <Link href="/terms">Terms of service</Link>{" "}
+          &copy; 2026 Greecon Sh.p.k. &mdash; All rights reserved. <Link href="/terms">Terms of service</Link>{" "}
           <Link href="/privacy">Privacy notice</Link>{" "}
           <a href="https://blog.greecon.earth" target="_blank" rel="noreferrer">
             Blog
