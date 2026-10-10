@@ -344,41 +344,115 @@ h3 {
   text-decoration: underline;
 }
 
-/* ---------- Footer bar ---------- */
+/* ---------- Footer (same design as blog.greecon.earth) ---------- */
 
 .site-footer {
-  background: var(--deep-green-gray);
+  background: var(--near-black-green);
   color: rgba(247, 241, 233, 0.85);
-}
-
-.site-footer .wrap {
-  display: flex;
-  padding-bottom: calc(16px + env(safe-area-inset-bottom));
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding-top: 16px;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
 }
 
 .site-footer a {
   text-decoration: underline;
-  margin-left: 6px;
+  text-underline-offset: 3px;
 }
 
+.site-footer a:hover {
+  color: var(--warm-background);
+}
+
+/* The default focus ring is dark green, which disappears on the dark footer. */
+.site-footer a:focus-visible {
+  outline-color: var(--pale-green-blue);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 32px;
+}
+
+.site-footer__title {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pale-green-blue);
+}
+
+.site-footer ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__legal {
+  border-top: 1px solid rgba(247, 241, 233, 0.16);
+  font-size: 0.84rem;
+}
+
+.site-footer__legal .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding-top: 16px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+.site-footer__legal p {
+  margin: 0;
+}
+
+/* Bare outline icons, as on the blog. The padding only enlarges the tap area; icon spacing stays 14px. */
 .social-links {
   display: flex;
-  gap: 12px;
+  gap: 2px;
+  margin-left: -6px;
 }
 
 .social-links a {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: rgba(247, 241, 233, 0.12);
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+@media (pointer: coarse) {
+  .social-links {
+    gap: 0;
+    margin-left: -12px;
+  }
+
+  .social-links a {
+    padding: 12px;
+  }
+
+  .site-footer ul {
+    gap: 0;
+  }
+
+  .site-footer li a,
+  .site-footer__legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-top: 32px;
+    padding-bottom: 24px;
+  }
 }
 
 /* ---------- Detail pages (Energy / Agriculture / Water) ---------- */
@@ -1179,29 +1253,6 @@ main:has(> .not-found) {
     flex-wrap: wrap;
     align-items: center;
     column-gap: 6px;
-  }
-
-  .site-footer .wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .site-footer p {
-    margin: 0;
-  }
-
-  .site-footer a {
-    display: inline-block;
-    padding: 12px 0;
-    margin-left: 0;
-    margin-right: 14px;
-  }
-
-  .social-links a {
-    width: 44px;
-    height: 44px;
-    margin-right: 0;
   }
 }
 
