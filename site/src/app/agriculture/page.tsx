@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { AgricultureIcon } from "../../components/icons";
 
 export const metadata: Metadata = {
@@ -115,6 +115,8 @@ export default function AgriculturePage() {
           ]}
         />
       </div>
+
+      <BlogCta sector="agriculture" topic="agriculture" />
 
       <ReturnMark />
 

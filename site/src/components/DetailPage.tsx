@@ -56,6 +56,19 @@ export function Philosophy({ title, lines }: { title: string; lines: ReactNode[]
   );
 }
 
+const BLOG_URL = "https://blog.greecon.earth";
+
+/** Link from a detail page to the matching sector filter on the Greecon Blog. */
+export function BlogCta({ sector, topic }: { sector: "energy" | "agriculture" | "water" | "platform"; topic: string }) {
+  return (
+    <p className="tech-cta wrap">
+      <a href={`${BLOG_URL}/blog?sector=${sector}`} target="_blank" rel="noreferrer">
+        More on {topic} on the Greecon Blog →
+      </a>
+    </p>
+  );
+}
+
 export function ReturnMark() {
   return (
     <div className="return-mark">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, ReturnMark } from "../../components/DetailPage";
+import { BackHome, BlogCta, ReturnMark } from "../../components/DetailPage";
 import { GaiaMark } from "../../components/icons";
 
 export const metadata: Metadata = {
@@ -69,6 +69,8 @@ export default function GaiaPage() {
           efficient systems with measurable outcomes.
         </p>
       </div>
+
+      <BlogCta sector="platform" topic="the platform" />
 
       <ReturnMark />
 

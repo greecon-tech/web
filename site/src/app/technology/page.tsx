@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, Philosophy } from "../../components/DetailPage";
+import { BackHome, BlogCta, Philosophy } from "../../components/DetailPage";
 import { ProcessDiagram } from "../../components/ProcessDiagram";
 
 export const metadata: Metadata = {
@@ -88,6 +88,7 @@ export default function TechnologyPage() {
       <p className="tech-cta wrap">
         <Link href="/gaia">Powered by GAIA Tech →</Link>
       </p>
+      <BlogCta sector="platform" topic="technology and process" />
 
       <Contact email="info@greecon.earth" />
       <SiteFooter />
