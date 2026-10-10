@@ -3,7 +3,7 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { EnergyIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("energy");
@@ -102,6 +102,8 @@ export default function EnergyPage() {
           ]}
         />
       </div>
+
+      <BlogCta sector="energy" topic="energy" />
 
       <ReturnMark />
 

@@ -3,7 +3,7 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph, gaiaNode } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, ReturnMark } from "../../components/DetailPage";
+import { BackHome, BlogCta, ReturnMark } from "../../components/DetailPage";
 import { GaiaMark } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("gaia");
@@ -69,6 +69,8 @@ export default function GaiaPage() {
           efficient systems with measurable outcomes.
         </p>
       </div>
+
+      <BlogCta sector="platform" topic="the platform" />
 
       <ReturnMark />
 

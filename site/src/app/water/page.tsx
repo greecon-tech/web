@@ -3,7 +3,7 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { WaterIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("water");
@@ -104,6 +104,8 @@ export default function WaterPage() {
           ]}
         />
       </div>
+
+      <BlogCta sector="water" topic="water" />
 
       <ReturnMark />
 
