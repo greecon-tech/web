@@ -87,6 +87,7 @@ No `NEXT_BASE_PATH` is needed for Railway — it serves from the domain root, un
 All search-related metadata for `site/` lives in one place so pages can't drift apart:
 
 - `site/src/lib/seo.ts` — per-page title, meta description, canonical path, social-card text, breadcrumb label and `lastModified` date, plus the company facts (legal name, address, contact, social profiles). Pages call `pageMetadata("<key>")`.
+- Social profiles (Instagram `@greecon`, X `@greeconHQ`, LinkedIn `/company/greecon`) are defined once as `SOCIAL` in `seo.ts` and used by the footer and the structured data. The footer deliberately mirrors the blog's (`greecontech/blog`) so both sites look the same; change them together.
 - `site/src/lib/schema.ts` — the JSON-LD graph (Organization, WebSite, WebPage, BreadcrumbList, Service, software entities). The site-wide part renders in `layout.tsx`; each page adds its own via `<JsonLd data={pageGraph(...)} />`.
 - `site/src/app/sitemap.ts`, `robots.ts`, `manifest.ts` and `site/public/llms.txt` — crawler-facing files. Sitemap dates come from `lastModified` in `seo.ts`, so **bump that date when a page's content changes**.
 - `site/public/serve.json` — redirects `/page` to `/page/`, and sets cache and security headers on Railway. The start command is `serve out` (not `serve -s`): single-page-app mode would return the home page for every URL and a 200 for unknown paths.

@@ -6,6 +6,13 @@ export const SITE_TAGLINE = "Building Enduring Intelligence for Energy, Water, a
 export const PLATFORM_URL = "https://app.greecon.earth";
 export const BLOG_URL = "https://blog.greecon.earth";
 
+/** Official social profiles. Instagram @greecon, X @greeconHQ, LinkedIn company page /greecon. */
+export const SOCIAL = {
+  instagram: "https://instagram.com/greecon",
+  x: "https://x.com/greeconHQ",
+  linkedin: "https://linkedin.com/company/greecon"
+} as const;
+
 export const OG_IMAGE = { url: "/og-image.png", width: 1200, height: 630, alt: "Greecon" };
 
 /** Company facts, taken from the Contact section and the Terms / Privacy pages. */
@@ -24,8 +31,9 @@ export const ORG = {
     addressCountry: "AL"
   },
   sameAs: [
-    "https://linkedin.com/company/greecon",
-    "https://instagram.com/greecon.earth",
+    SOCIAL.linkedin,
+    SOCIAL.instagram,
+    SOCIAL.x,
     BLOG_URL,
     PLATFORM_URL
   ]
