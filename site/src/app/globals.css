@@ -143,10 +143,18 @@ h3 {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.product-card:hover,
 .product-card:focus-visible {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+/* Only lift on hover where hover exists, so taps on touch screens don't
+   leave a card stuck in its raised state. */
+@media (hover: hover) {
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .product-card__icon {
@@ -289,7 +297,7 @@ h3 {
 
 .cta__panel {
   position: relative;
-  width: min(460px, 100%);
+  max-width: 460px;
   margin: 0 28px;
   border-radius: var(--radius-lg);
   background: rgba(26, 33, 29, 0.82);
@@ -392,6 +400,7 @@ h3 {
 
 .contact-details dd {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .contact-details a {
@@ -444,9 +453,13 @@ h3 {
 
 .back-home {
   position: absolute;
-  top: 28px;
-  left: 28px;
+  top: 16px;
+  left: 16px;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--deep-green-gray);
 }
 
@@ -562,6 +575,14 @@ h3 {
   gap: 14px;
   padding: 40px 0 10px;
   color: var(--deep-green-gray);
+}
+
+.return-mark a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .return-mark__logo {
@@ -763,7 +784,112 @@ h3 {
   }
 
   .back-home {
-    top: 20px;
-    left: 20px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .site-mark {
+    padding: 36px 0 28px;
+  }
+
+  .hero {
+    padding-bottom: 40px;
+  }
+
+  .product-grid,
+  .platform,
+  .statement {
+    padding: 28px 0;
+  }
+
+  .product-card {
+    min-height: 0;
+  }
+
+  .statement h2 {
+    font-size: 1.3rem;
+  }
+
+  .cta {
+    padding: 40px 0;
+  }
+
+  .cta__panel {
+    margin: 0 16px;
+    padding: 28px 22px;
+  }
+
+  .cta__panel h2 {
+    font-size: 1.35rem;
+  }
+
+  .detail-intro,
+  .gaia-hero {
+    padding: 0 20px 24px;
+  }
+
+  .detail-intro h1,
+  .tech-intro h1 {
+    font-size: 1.45rem;
+  }
+
+  .detail-lede p {
+    padding: 20px;
+  }
+
+  .gaia-hero__icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .gaia-hero__wordmark span {
+    font-size: 2.4rem;
+  }
+
+  .legal-page {
+    padding-top: 56px;
+  }
+
+  .legal-page h1 {
+    font-size: 1.35rem;
+    overflow-wrap: anywhere;
+  }
+
+  /* Comfortable tap targets for the small text links. */
+  .platform-link:not(.platform-link--primary),
+  .tech-cta a,
+  .contact-details a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .contact-details > div {
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 6px;
+  }
+
+  .site-footer .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
+  .site-footer a {
+    display: inline-block;
+    padding: 12px 0;
+    margin-left: 0;
+    margin-right: 14px;
+  }
+
+  .social-links a {
+    width: 44px;
+    height: 44px;
+    margin-right: 0;
   }
 }
