@@ -97,6 +97,8 @@ h3 {
 /* ---------- Site header (home) ---------- */
 
 .site-mark {
+  margin: 0;
+  font-size: inherit;
   display: flex;
   justify-content: center;
   padding: 56px 0 40px;
@@ -526,6 +528,8 @@ h3 {
 }
 
 .gaia-hero__wordmark {
+  margin: 0;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

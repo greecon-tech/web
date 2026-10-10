@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev -p 3100",
     "build": "next build",
-    "start": "serve -s out -l ${PORT:-3100}",
+    "start": "serve out -l ${PORT:-3100}",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

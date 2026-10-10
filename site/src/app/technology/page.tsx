@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph, platformNode, processList } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../../components/Contact";
 import { BackHome, Philosophy } from "../../components/DetailPage";
 import { ProcessDiagram } from "../../components/ProcessDiagram";
 
-export const metadata: Metadata = {
-  title: "Technology & Process — Greecon",
-  description: "How Greecon designs, connects, and automates renewable energy, agriculture, and water systems."
-};
+export const metadata: Metadata = pageMetadata("technology");
 
 const steps = [
   {
@@ -40,6 +40,7 @@ const steps = [
 export default function TechnologyPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("technology", [platformNode(), processList(steps)])} />
       <BackHome />
 
       <div className="process-diagram">

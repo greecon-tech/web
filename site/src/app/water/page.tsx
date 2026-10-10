@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
 import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { WaterIcon } from "../../components/icons";
 
-export const metadata: Metadata = {
-  title: "Water — Greecon",
-  description:
-    "Greecon designs automated systems for wastewater treatment and water reuse, helping cities and industries recycle water and reduce their environmental footprint."
-};
+export const metadata: Metadata = pageMetadata("water");
 
 export default function WaterPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("water")} />
       <BackHome />
 
       <DetailIntro

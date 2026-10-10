@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Serif } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "../components/JsonLd";
+import { siteGraph } from "../lib/schema";
+import { OG_IMAGE, PAGES, SITE_NAME, SITE_URL } from "../lib/seo";
 
 const plexSerif = IBM_Plex_Serif({
   subsets: ["latin"],
@@ -10,53 +13,83 @@ const plexSerif = IBM_Plex_Serif({
   display: "swap"
 });
 
-const title = "Greecon — Building Enduring Intelligence for Energy, Water, and Agriculture";
-const description = "Building enduring intelligence for energy, water, and agriculture.";
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f7f1e9"
+};
 
+const socialTitle = PAGES.home.ogTitle ?? PAGES.home.title;
+
+/** Site-wide defaults; each page overrides title, description, canonical and social cards via pageMetadata(). */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://greecon.earth"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: title,
+    default: PAGES.home.title,
     template: "%s"
   },
-  description,
-  applicationName: "Greecon",
+  description: PAGES.home.description,
+  applicationName: SITE_NAME,
   keywords: [
     "Greecon",
     "renewable energy Albania",
     "smart agriculture",
     "water management",
+    "wastewater treatment and reuse",
     "GAIA Tech",
     "SCADA platform",
     "agrivoltaics",
     "IoT sustainability"
   ],
-  authors: [{ name: "Greecon Sh.p.k." }],
+  authors: [{ name: "Greecon Sh.p.k.", url: SITE_URL }],
+  creator: "Greecon Sh.p.k.",
+  publisher: "Greecon Sh.p.k.",
+  category: "technology",
+  manifest: "/manifest.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
   icons: {
-    icon: "/greecon-mark.svg",
-    shortcut: "/greecon-mark.svg"
+    icon: [
+      { url: "/greecon-mark.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" }
+    ],
+    shortcut: "/greecon-mark.svg",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
   },
   openGraph: {
     type: "website",
-    title,
-    description,
-    siteName: "Greecon",
-    url: "https://greecon.earth",
+    title: socialTitle,
+    description: PAGES.home.description,
+    siteName: SITE_NAME,
+    url: "/",
     locale: "en_US",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Greecon" }]
+    images: [OG_IMAGE]
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: ["/og-image.png"]
+    title: socialTitle,
+    description: PAGES.home.description,
+    images: [OG_IMAGE.url]
   }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={plexSerif.variable}>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={siteGraph()} />
+        {children}
+      </body>
     </html>
   );
 }

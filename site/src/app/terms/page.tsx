@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { SiteFooter } from "../../components/Contact";
 import { BackHome } from "../../components/DetailPage";
 
-export const metadata: Metadata = {
-  title: "Terms of Service — Greecon",
-  description: "The terms that govern use of the Greecon website and the information published on it."
-};
+export const metadata: Metadata = pageMetadata("terms");
 
 export default function TermsPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("terms")} />
       <BackHome />
       <div className="legal-page wrap">
         <h1>Terms of Service</h1>

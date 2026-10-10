@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
+import { JsonLd } from "../../components/JsonLd";
+import { pageGraph } from "../../lib/schema";
+import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
 import { BackHome, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { EnergyIcon } from "../../components/icons";
 
-export const metadata: Metadata = {
-  title: "Energy — Greecon",
-  description:
-    "Greecon designs renewable energy systems that combine solar, hybrid, and agrivoltaic solutions — every system connected, monitored, and optimized in real time."
-};
+export const metadata: Metadata = pageMetadata("energy");
 
 export default function EnergyPage() {
   return (
     <main className="detail-page">
+      <JsonLd data={pageGraph("energy")} />
       <BackHome />
 
       <DetailIntro

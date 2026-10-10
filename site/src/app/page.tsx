@@ -1,17 +1,24 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../components/Contact";
 import { AgricultureIcon, EnergyIcon, GreeconMark, WaterIcon } from "../components/icons";
+import { JsonLd } from "../components/JsonLd";
 import { ProductCard } from "../components/ProductCard";
+import { pageGraph, platformNode } from "../lib/schema";
+import { pageMetadata } from "../lib/seo";
+
+export const metadata: Metadata = pageMetadata("home");
 
 export default function HomePage() {
   return (
     <main>
-      <div className="site-mark">
+      <JsonLd data={pageGraph("home", [platformNode()])} />
+      <h1 className="site-mark">
         <Link href="/" aria-label="Greecon">
           <GreeconMark size={56} />
         </Link>
-      </div>
+      </h1>
 
       <section className="hero wrap">
         <p>
