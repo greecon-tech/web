@@ -14,6 +14,7 @@ export const ORG = {
   taxId: "M61525505A",
   email: "info@greecon.earth",
   telephone: "+355694443362",
+  telephoneDisplay: "+355 69 444 3362",
   address: {
     streetAddress: "Durana Tech Park, Rruga Ahmet Zogu, Xhafzotaj",
     addressLocality: "Shijak",
