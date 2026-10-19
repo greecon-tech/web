@@ -108,9 +108,38 @@ h3 {
 
 /* ---------- Site header (home) ---------- */
 
-/* Mobile / tablet header (shown below 861px, see Responsive). */
 .site-header {
-  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top);
+  background: var(--warm-background);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-h);
+  padding: 0 var(--pad-r) 0 var(--pad-l);
+  background: var(--warm-background);
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--living-green);
+}
+
+.site-menu__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .site-mark {
@@ -118,7 +147,7 @@ h3 {
   font-size: inherit;
   display: flex;
   justify-content: center;
-  padding: 56px 0 40px;
+  padding: 32px 0 40px;
   color: var(--living-green);
 }
 
@@ -459,19 +488,7 @@ h3 {
 
 .detail-page {
   position: relative;
-  padding-top: 64px;
-}
-
-.back-home {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  color: var(--deep-green-gray);
+  padding-top: 24px;
 }
 
 .detail-intro {
@@ -777,7 +794,7 @@ main:has(> .not-found) {
 /* ---------- Legal pages ---------- */
 
 .legal-page {
-  padding: 64px 0 20px;
+  padding: 24px 0 20px;
 }
 
 .legal-page h1 {
@@ -949,7 +966,7 @@ main:has(> .not-found) {
   }
 }
 
-/* Phones and tablets: single column, plus the sticky header and full-screen menu. */
+/* Phones and small tablets: single column and tighter spacing. */
 @media (max-width: 860px) {
   .product-grid,
   .platform,
@@ -957,39 +974,22 @@ main:has(> .not-found) {
     grid-template-columns: 1fr;
   }
 
-  .back-home {
-    display: none;
+  /* The header now carries the way home, so the pages need less top space. */
+  .site-mark {
+    padding: 20px 0 28px;
   }
 
-  .site-header {
-    display: block;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding-top: env(safe-area-inset-top);
-    background: var(--warm-background);
-    border-bottom: 1px solid var(--line);
+  .detail-page {
+    padding-top: 12px;
   }
 
-  .site-header__bar {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: var(--header-h);
-    padding: 0 var(--pad-r) 0 var(--pad-l);
-    background: var(--warm-background);
+  .legal-page {
+    padding-top: 12px;
   }
+}
 
-  .site-header__logo {
-    display: inline-flex;
-    align-items: center;
-    min-width: 44px;
-    min-height: 44px;
-    color: var(--living-green);
-  }
-
+/* Phones and tablets: a Menu button that opens a full-screen menu. */
+@media (max-width: 1000px) {
   .site-header__toggle {
     display: inline-flex;
     align-items: center;
@@ -1060,14 +1060,8 @@ main:has(> .not-found) {
     overscroll-behavior: contain;
   }
 
-  .site-menu[hidden] {
+  .site-menu:not([data-open="true"]) {
     display: none;
-  }
-
-  .site-menu__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
   }
 
   .site-menu__list a {
@@ -1131,18 +1125,94 @@ main:has(> .not-found) {
   .site-menu__contact a:active {
     background: var(--surface);
   }
+}
 
-  /* The header now carries the way home, so the pages need less top space. */
-  .site-mark {
-    padding: 20px 0 28px;
+/* Desktop: the same links, inline in the header. */
+@media (min-width: 1001px) {
+  :root {
+    --header-h: 64px;
   }
 
-  .detail-page {
-    padding-top: 12px;
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding-left: max(var(--pad-l), calc((100% - 1080px) / 2 + var(--gutter)));
+    padding-right: max(var(--pad-r), calc((100% - 1080px) / 2 + var(--gutter)));
   }
 
-  .legal-page {
-    padding-top: 12px;
+  .site-header__bar {
+    z-index: auto;
+    padding: 0;
+    background: transparent;
+  }
+
+  .site-header__logo {
+    min-width: 0;
+  }
+
+  .site-header__toggle {
+    display: none;
+  }
+
+  .site-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .site-menu__list {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  /* The logo is the way home. */
+  .site-menu__list li:first-child {
+    display: none;
+  }
+
+  .site-menu__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--deep-green-gray);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
+  .site-menu__list a:hover {
+    color: var(--accent-text);
+  }
+
+  .site-menu__list a[aria-current="page"] {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-decoration-color: var(--living-green);
+  }
+
+  .site-menu__contact {
+    display: none;
+  }
+
+  .site-menu__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--action);
+    color: var(--on-action);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .site-menu__cta:hover {
+    background: var(--near-black-green);
   }
 }
 
@@ -1153,7 +1223,7 @@ main:has(> .not-found) {
 }
 
 /* Landscape phones: keep the bar, but slimmer. */
-@media (max-width: 860px) and (max-height: 500px) {
+@media (max-width: 1000px) and (max-height: 500px) {
   :root {
     --header-h: 48px;
   }

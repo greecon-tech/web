@@ -20,7 +20,10 @@ const blogLink = { href: BLOG_URL, label: "Blog" };
 
 const trim = (path: string) => path.replace(/\/+$/, "") || "/";
 
-/** Phone-and-tablet navigation: a slim sticky bar plus a full-screen menu. Hidden by CSS on desktop. */
+/**
+ * Site navigation, sticky at the top. Desktop: logo plus inline links. Phones and tablets (up to 1000px): a Menu button
+ * that opens a full-screen menu. The same links render in both; CSS decides how they are shown.
+ */
 export function SiteHeader() {
   const pathname = trim(usePathname() ?? "/");
   const [open, setOpen] = useState(false);
@@ -31,7 +34,7 @@ export function SiteHeader() {
     setOpen(false);
   }, [pathname]);
 
-  // While open: lock page scroll, make the page behind inert, close on Escape or when the screen widens.
+  // While the menu is open: lock page scroll, make the page behind inert, close on Escape or when the screen widens.
   useEffect(() => {
     if (!open) return;
     const main = document.querySelector("main");
@@ -45,7 +48,7 @@ export function SiteHeader() {
         toggleRef.current?.focus();
       }
     };
-    const wide = window.matchMedia("(min-width: 861px)");
+    const wide = window.matchMedia("(min-width: 1001px)");
     const onWide = () => wide.matches && setOpen(false);
 
     document.addEventListener("keydown", onKeyDown);
@@ -84,7 +87,7 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <nav id="site-menu" className="site-menu" aria-label="Main" hidden={!open}>
+      <nav id="site-menu" className="site-menu" aria-label="Main" data-open={open}>
         <ul className="site-menu__list">
           {links.map((link) => (
             <li key={link.href}>

@@ -3,7 +3,7 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph, gaiaNode } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, BlogCta, ReturnMark } from "../../components/DetailPage";
+import { BlogCta, ReturnMark } from "../../components/DetailPage";
 import { GaiaMark } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("gaia");
@@ -12,7 +12,6 @@ export default function GaiaPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("gaia", [gaiaNode()])} />
-      <BackHome />
 
       <header className="gaia-hero">
         <div className="gaia-hero__mark">

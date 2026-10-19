@@ -5,7 +5,7 @@ import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { WaterIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("water");
@@ -16,7 +16,6 @@ export default async function WaterPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("water")} />
-      <BackHome />
 
       <DetailIntro
         icon={<WaterIcon tile="light" size={72} />}

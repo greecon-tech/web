@@ -5,7 +5,7 @@ import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { EnergyIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("energy");
@@ -16,7 +16,6 @@ export default async function EnergyPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("energy")} />
-      <BackHome />
 
       <DetailIntro
         icon={<EnergyIcon tile="light" size={72} />}

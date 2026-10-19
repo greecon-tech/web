@@ -3,14 +3,6 @@ import type { ReactNode } from "react";
 import { BLOG_URL } from "../lib/seo";
 import { BackArrowIcon, GreeconMark } from "./icons";
 
-export function BackHome() {
-  return (
-    <Link href="/" className="back-home" aria-label="Back to home">
-      <BackArrowIcon />
-    </Link>
-  );
-}
-
 export function DetailIntro({
   icon,
   eyebrow,

@@ -3,7 +3,6 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { SiteFooter } from "../../components/Contact";
-import { BackHome } from "../../components/DetailPage";
 
 export const metadata: Metadata = pageMetadata("privacy");
 
@@ -11,7 +10,6 @@ export default function PrivacyPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("privacy")} />
-      <BackHome />
       <div className="legal-page wrap">
         <h1>Privacy Notice</h1>
         <p className="legal-updated">Last updated: October 2026</p>
