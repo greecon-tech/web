@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "../components/Contact";
-import { BackHome } from "../components/DetailPage";
 import { GreeconMark } from "../components/icons";
 
 export const metadata: Metadata = {
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="detail-page">
-      <BackHome />
       <div className="not-found wrap">
         <Link href="/" aria-label="Greecon home">
           <GreeconMark size={56} />

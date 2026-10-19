@@ -5,7 +5,7 @@ import { getPostsByCategory } from "../../lib/blog";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
+import { BlogCta, DetailIntro, DetailSection, Philosophy, ReturnMark } from "../../components/DetailPage";
 import { AgricultureIcon } from "../../components/icons";
 
 export const metadata: Metadata = pageMetadata("agriculture");
@@ -16,7 +16,6 @@ export default async function AgriculturePage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("agriculture")} />
-      <BackHome />
 
       <DetailIntro
         icon={<AgricultureIcon tile="light" size={72} />}

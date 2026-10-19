@@ -6,7 +6,7 @@ import { pageGraph, platformNode, processList } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import Link from "next/link";
 import { Contact, SiteFooter } from "../../components/Contact";
-import { BackHome, BlogCta, Philosophy } from "../../components/DetailPage";
+import { BlogCta, Philosophy } from "../../components/DetailPage";
 import { ProcessDiagram } from "../../components/ProcessDiagram";
 
 export const metadata: Metadata = pageMetadata("technology");
@@ -45,7 +45,6 @@ export default async function TechnologyPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("technology", [platformNode(), processList(steps)])} />
-      <BackHome />
 
       <div className="process-diagram">
         <ProcessDiagram />

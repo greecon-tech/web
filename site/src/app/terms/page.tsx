@@ -4,7 +4,6 @@ import { JsonLd } from "../../components/JsonLd";
 import { pageGraph } from "../../lib/schema";
 import { pageMetadata } from "../../lib/seo";
 import { SiteFooter } from "../../components/Contact";
-import { BackHome } from "../../components/DetailPage";
 
 export const metadata: Metadata = pageMetadata("terms");
 
@@ -12,7 +11,6 @@ export default function TermsPage() {
   return (
     <main className="detail-page">
       <JsonLd data={pageGraph("terms")} />
-      <BackHome />
       <div className="legal-page wrap">
         <h1>Terms of Service</h1>
         <p className="legal-updated">Last updated: October 2026</p>
