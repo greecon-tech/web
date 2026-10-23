@@ -28,11 +28,19 @@ export type BlogPost = {
 const TIMEOUT_MS = 10_000;
 const MAX_ARTICLES = 60;
 
+/**
+ * Every request carries a parameter unique to this build. The blog's pages can be cached for a long time at its edge,
+ * and a build cache can keep earlier responses keyed by URL; a stale answer here would make the site miss a language
+ * the blog has just published. (Do not use `cache: "no-store"` instead: it makes the static export refuse the page.)
+ */
+const BUILD_ID = Date.now();
+
 async function fetchText(url: string): Promise<string> {
+  const fresh = `${url}${url.includes("?") ? "&" : "?"}build=${BUILD_ID}`;
   let lastError: unknown;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const response = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) });
+      const response = await fetch(fresh, { signal: AbortSignal.timeout(TIMEOUT_MS) });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.text();
     } catch (error) {
