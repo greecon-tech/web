@@ -1,13 +1,15 @@
 import type { MetadataRoute } from "next";
-import { PAGES, SITE_NAME } from "../lib/seo";
+import { getDictionary } from "../i18n/dictionaries";
+import { SITE_NAME } from "../lib/seo";
 
 export const dynamic = "force-static";
 
+// One manifest for the whole site, in English (the default language).
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
     short_name: SITE_NAME,
-    description: PAGES.home.description,
+    description: getDictionary("en").meta.home.description,
     start_url: "/",
     scope: "/",
     display: "browser",

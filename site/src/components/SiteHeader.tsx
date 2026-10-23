@@ -3,36 +3,38 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { BLOG_URL, PLATFORM_URL, ORG } from "../lib/seo";
+import { LOCALES, LOCALE_INFO, localePath, splitLocale, type Locale } from "../i18n/config";
+import type { Dictionary } from "../i18n/types";
+import { BLOG_URL, ORG, PLATFORM_URL } from "../lib/seo";
 import { GreeconMark } from "./icons";
 
+// Language-neutral paths; each is prefixed with the current language when rendered.
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/energy/", label: "Energy" },
-  { href: "/agriculture/", label: "Agriculture" },
-  { href: "/water/", label: "Water" },
-  { href: "/technology/", label: "Technology & Process" },
-  { href: "/gaia/", label: "GAIA Tech" }
-];
-
-// The blog is a separate site on a subdomain, so it is a plain link rather than a client-side route.
-const blogLink = { href: BLOG_URL, label: "Blog" };
+  { path: "/", key: "home" },
+  { path: "/energy/", key: "energy" },
+  { path: "/agriculture/", key: "agriculture" },
+  { path: "/water/", key: "water" },
+  { path: "/technology/", key: "technology" },
+  { path: "/gaia/", key: "gaia" }
+] as const;
 
 const trim = (path: string) => path.replace(/\/+$/, "") || "/";
 
 /**
- * Site navigation, sticky at the top. Desktop: logo plus inline links. Phones and tablets (up to 1000px): a Menu button
+ * Site navigation, sticky at the top. Desktop: logo plus inline links. Phones and tablets (up to 1100px): a Menu button
  * that opens a full-screen menu. The same links render in both; CSS decides how they are shown.
  */
-export function SiteHeader() {
-  const pathname = trim(usePathname() ?? "/");
+export function SiteHeader({ locale, labels }: { locale: Locale; labels: Dictionary["header"] }) {
+  const { path: currentPath } = splitLocale(usePathname() ?? "/");
+  const current = trim(currentPath);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const home = localePath(locale, "/");
 
   // Close after navigating.
   useEffect(() => {
     setOpen(false);
-  }, [pathname]);
+  }, [currentPath]);
 
   // While the menu is open: lock page scroll, make the page behind inert, close on Escape or when the screen widens.
   useEffect(() => {
@@ -48,7 +50,7 @@ export function SiteHeader() {
         toggleRef.current?.focus();
       }
     };
-    const wide = window.matchMedia("(min-width: 1001px)");
+    const wide = window.matchMedia("(min-width: 1101px)");
     const onWide = () => wide.matches && setOpen(false);
 
     document.addEventListener("keydown", onKeyDown);
@@ -64,10 +66,10 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__bar">
-        {pathname === "/" ? (
+        {current === "/" ? (
           <span />
         ) : (
-          <Link href="/" className="site-header__logo" aria-label="Greecon home">
+          <Link href={home} className="site-header__logo" aria-label={labels.goHome}>
             <GreeconMark size={30} />
           </Link>
         )}
@@ -79,7 +81,7 @@ export function SiteHeader() {
           aria-controls="site-menu"
           onClick={() => setOpen((value) => !value)}
         >
-          <span>{open ? "Close" : "Menu"}</span>
+          <span>{open ? labels.close : labels.menu}</span>
           <span className="site-header__icon" data-open={open} aria-hidden="true">
             <i />
             <i />
@@ -87,25 +89,43 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <nav id="site-menu" className="site-menu" aria-label="Main" data-open={open}>
+      <nav id="site-menu" className="site-menu" aria-label={labels.mainNav} data-open={open}>
         <ul className="site-menu__list">
           {links.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href} aria-current={trim(link.href) === pathname ? "page" : undefined}>
-                {link.label}
+            <li key={link.path}>
+              <Link
+                href={localePath(locale, link.path)}
+                aria-current={trim(link.path) === current ? "page" : undefined}
+              >
+                {labels.links[link.key]}
               </Link>
             </li>
           ))}
           <li>
-            <a href={blogLink.href}>{blogLink.label}</a>
+            {/* The blog is a separate site on a subdomain, so it is a plain link rather than a client-side route. */}
+            <a href={BLOG_URL}>{labels.blog}</a>
           </li>
         </ul>
+        <div className="site-menu__languages" role="group" aria-label={labels.language}>
+          {LOCALES.filter((code) => code !== locale).map((code) => (
+            // Plain links: each language is its own root layout, so switching is a full page load.
+            <a
+              key={code}
+              className="site-menu__lang"
+              href={localePath(code, currentPath)}
+              hrefLang={LOCALE_INFO[code].htmlLang}
+              lang={LOCALE_INFO[code].htmlLang}
+            >
+              {LOCALE_INFO[code].label}
+            </a>
+          ))}
+        </div>
         <a className="site-menu__cta" href={PLATFORM_URL} target="_blank" rel="noreferrer">
-          Open the Platform →
+          {labels.platformCta}
         </a>
         <div className="site-menu__contact">
-          <a href={`tel:${ORG.telephone}`}>Call</a>
-          <a href={`mailto:${ORG.email}`}>Email</a>
+          <a href={`tel:${ORG.telephone}`}>{labels.call}</a>
+          <a href={`mailto:${ORG.email}`}>{labels.email}</a>
         </div>
       </nav>
     </header>

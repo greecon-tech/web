@@ -440,6 +440,15 @@ h3 {
 }
 
 /* Bare outline icons, as on the blog. The padding only enlarges the tap area; icon spacing stays 14px. */
+.site-footer__title--spaced {
+  margin-top: 22px;
+}
+
+.site-footer__languages [aria-current="true"] {
+  font-weight: 700;
+  color: var(--warm-background);
+}
+
 .social-links {
   display: flex;
   gap: 2px;
@@ -857,6 +866,13 @@ main:has(> .not-found) {
   letter-spacing: 0.03em;
 }
 
+.blog-teaser__note {
+  margin: -6px 0 14px;
+  font-size: 0.86rem;
+  font-style: italic;
+  color: var(--deep-green-gray);
+}
+
 .blog-teaser__list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -989,7 +1005,7 @@ main:has(> .not-found) {
 }
 
 /* Phones and tablets: a Menu button that opens a full-screen menu. */
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .site-header__toggle {
     display: inline-flex;
     align-items: center;
@@ -1125,10 +1141,39 @@ main:has(> .not-found) {
   .site-menu__contact a:active {
     background: var(--surface);
   }
+
+  .site-menu__cta {
+    order: 1;
+  }
+
+  .site-menu__contact {
+    order: 2;
+  }
+
+  .site-menu__languages {
+    order: 3;
+    display: flex;
+  }
+
+  .site-menu__lang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--deep-green-gray);
+  }
+
+  .site-menu__lang:active {
+    background: var(--surface);
+  }
 }
 
 /* Desktop: the same links, inline in the header. */
-@media (min-width: 1001px) {
+@media (min-width: 1101px) {
   :root {
     --header-h: 64px;
   }
@@ -1173,6 +1218,12 @@ main:has(> .not-found) {
     display: none;
   }
 
+  .site-menu__list a,
+  .site-menu__lang,
+  .site-menu__cta {
+    white-space: nowrap;
+  }
+
   .site-menu__list a {
     display: inline-flex;
     align-items: center;
@@ -1196,6 +1247,28 @@ main:has(> .not-found) {
 
   .site-menu__contact {
     display: none;
+  }
+
+  .site-menu__languages {
+    display: flex;
+    gap: 8px;
+  }
+
+  .site-menu__lang {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--deep-green-gray);
+  }
+
+  .site-menu__lang:hover {
+    color: var(--accent-text);
+    border-color: var(--accent);
   }
 
   .site-menu__cta {
@@ -1223,7 +1296,7 @@ main:has(> .not-found) {
 }
 
 /* Landscape phones: keep the bar, but slimmer. */
-@media (max-width: 1000px) and (max-height: 500px) {
+@media (max-width: 1100px) and (max-height: 500px) {
   :root {
     --header-h: 48px;
   }
