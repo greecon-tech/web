@@ -80,6 +80,12 @@ To serve it from a custom domain (e.g. `greecon.earth`) instead of the `/‹repo
 2. In the service's **Settings → Source**, set **Root Directory** to `site`. Railway will then pick up `site/railway.json` automatically.
 3. Deploy. Railway assigns a `*.up.railway.app` URL by default; add `greecon.earth` under **Settings → Networking → Custom Domain** when ready, and point its DNS per Railway's instructions.
 
+**Production:** `greecon.earth` is served by Railway (not by GitHub Pages). The GitHub Pages workflow only publishes a
+project copy at `https://greecon-tech.github.io/web/`. Because the site is a static export, links that depend on the
+blog are decided at build time: the Albanian pages link to `blog.greecon.earth/sq` only if the blog's sitemap lists
+Albanian URLs when Railway builds. After the blog publishes a new language, trigger a Railway redeploy (Deployments →
+Redeploy) or merge any change to `main`.
+
 No `NEXT_BASE_PATH` is needed for Railway — it serves from the domain root, unlike the GitHub Pages `/‹repo›/` sub-path above.
 
 ### SEO, answer engines, and site metadata

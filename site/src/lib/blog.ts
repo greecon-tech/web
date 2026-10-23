@@ -11,7 +11,9 @@ import { BLOG_URL } from "./seo";
  * the blog cannot be reached, the page falls back to the English blog, so a link can never lead to a 404.
  *
  * The site is a static export, so all of this is decided when the site is built: after the blog adds or publishes
- * a language, redeploy the site.
+ * a language, redeploy the site. greecon.earth is served by Railway, which rebuilds on every push to main (or via
+ * Redeploy in the Railway dashboard). The "Deploy to GitHub Pages" workflow only updates the github.io copy and does
+ * NOT change greecon.earth.
  */
 export type BlogPost = {
   url: string;
