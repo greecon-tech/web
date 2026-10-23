@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { localePath, type Locale } from "../i18n/config";
+import { getDictionary } from "../i18n/dictionaries";
 import { BLOG_URL } from "../lib/seo";
 import { BackArrowIcon, GreeconMark } from "./icons";
 
@@ -49,25 +51,33 @@ export function Philosophy({ title, lines }: { title: string; lines: ReactNode[]
   );
 }
 
-
-/** Link from a detail page to the matching sector filter on the Greecon Blog. */
-export function BlogCta({ sector, topic }: { sector: "energy" | "agriculture" | "water" | "platform"; topic: string }) {
+/** Link from a page to the matching sector filter on the Greecon Blog (the blog itself is in English). */
+export function BlogCta({
+  locale,
+  sector,
+  text
+}: {
+  locale: Locale;
+  sector: "energy" | "agriculture" | "water" | "platform";
+  text: "energy" | "agriculture" | "water" | "platform" | "technology";
+}) {
+  const t = getDictionary(locale);
   return (
     <p className="tech-cta wrap">
-      <a href={`${BLOG_URL}/blog?sector=${sector}`}>
-        More on {topic} on the Greecon Blog →
-      </a>
+      <a href={`${BLOG_URL}/blog?sector=${sector}`}>{t.blog.moreOn[text]}</a>
     </p>
   );
 }
 
-export function ReturnMark() {
+export function ReturnMark({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const home = localePath(locale, "/");
   return (
     <div className="return-mark">
-      <Link href="/" aria-label="Back to home">
+      <Link href={home} aria-label={t.aria.backHome}>
         <BackArrowIcon />
       </Link>
-      <Link href="/" aria-label="Greecon home" className="return-mark__logo">
+      <Link href={home} aria-label={t.aria.greeconHome} className="return-mark__logo">
         <GreeconMark size={44} />
       </Link>
     </div>

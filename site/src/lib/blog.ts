@@ -98,9 +98,3 @@ export async function getLatestPosts(limit: number): Promise<BlogPost[]> {
 export async function getPostsByCategory(category: string, limit: number): Promise<BlogPost[]> {
   return (await getBlogPosts()).filter((post) => post.category === category).slice(0, limit);
 }
-
-const dateFormat = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-
-export function formatPostDate(date: string): string {
-  return dateFormat.format(new Date(`${date}T00:00:00Z`));
-}

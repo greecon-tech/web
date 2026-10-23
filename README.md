@@ -92,7 +92,7 @@ All search-related metadata for `site/` lives in one place so pages can't drift 
 - `site/src/app/sitemap.ts`, `robots.ts`, `manifest.ts` and `site/public/llms.txt` — crawler-facing files. Sitemap dates come from `lastModified` in `seo.ts`, so **bump that date when a page's content changes**.
 - `site/public/serve.json` — redirects `/page` to `/page/`, and sets cache and security headers on Railway. The start command is `serve out` (not `serve -s`): single-page-app mode would return the home page for every URL and a 200 for unknown paths.
 
-When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) to `public/llms.txt`, and to the `links` list in `site/src/components/SiteHeader.tsx` (the site navigation: inline links on desktop, a Menu button on phones and tablets up to 1000px).
+When you add a page, add it to `PAGES` in `seo.ts` (it is then picked up by the sitemap and metadata) to `public/llms.txt`, and to the `links` list in `site/src/components/SiteHeader.tsx` (the site navigation: inline links on desktop, a Menu button on phones and tablets up to 1100px).
 
 Any text that describes how the site handles personal data (`/privacy`, `/terms`) must be kept in line with what the site actually does — for example, if a signup form or analytics is added, update both pages first.
 
@@ -106,4 +106,15 @@ The blog is a separate Next.js site (repo `greecontech/blog`). The website conne
 - **Privacy:** the Privacy Notice names the blog as part of the Site. The blog sets no cookies and loads no third-party scripts; keep it that way, or update the notice first.
 
 Because the website is a static export, article lists are read **at build time**. After publishing a new article, redeploy the website (Railway → the `site` service → **Redeploy**) for it to appear here. If the blog is unreachable during a build, the build still succeeds and the article sections are simply left out. Automating the redeploy (for example, a GitHub Action in the blog repo that calls Railway when an article is published) needs a Railway API token stored as a secret.
+
+### Languages (English and Albanian)
+
+English is the default and lives at the site root (`greecon.earth/…`); Albanian lives under `/sq/` (`greecon.earth/sq/…`). There is no automatic redirect by browser language (it hurts search indexing); visitors switch with the language links in the header menu and the footer. The 404 page is shared and written in both languages.
+
+- **Text** lives in `site/src/i18n/dictionaries/en.tsx` and `sq.tsx`. Both must have the same shape: TypeScript refuses to build if an Albanian entry is missing. Titles and descriptions for search engines are in each dictionary's `meta`. Brand and product names (Greecon, GAIA Tech, SCADA, IoT) are not translated.
+- **Pages** are language-neutral components in `site/src/views/`; the route files are thin: `src/app/(en)/…` for English and `src/app/[lang]/…` for every other language. Each language is its own root layout, so `<html lang>` is correct (the 404 uses Next's experimental `globalNotFound` flag for this reason).
+- **Search engines:** every page has `hreflang` alternates (plus `x-default` = English), a per-language canonical URL, localized Open Graph tags and structured data, and each language has its own sitemap entries.
+- **Blog:** the blog stays in English; on Albanian pages its article cards are marked `lang="en"` and a short note says so.
+- **Adding a language:** add its code and details to `src/i18n/config.ts`, create `dictionaries/<code>.tsx` (copy `en.tsx` and translate), register it in `dictionaries/index.ts`, and add its keywords to the sitemap/llms files. Pages, the sitemap, hreflang and the switcher pick it up automatically.
+- **Translation review:** the Albanian text (especially `terms` and `privacy`) should be reviewed by a native speaker and, for the legal pages, a lawyer. If the two languages ever disagree, decide in the Terms which version prevails.
 

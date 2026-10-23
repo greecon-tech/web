@@ -9,7 +9,11 @@ const nextConfig = {
   output: "export",
   trailingSlash: true,
   basePath,
-  images: { unoptimized: true }
+  images: { unoptimized: true },
+  experimental: {
+    // One 404 page for every language: the site has several root layouts (one per language).
+    globalNotFound: true
+  }
 };
 
 export default nextConfig;

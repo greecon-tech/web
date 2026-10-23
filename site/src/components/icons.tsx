@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 /** The GAIA Tech mark (the official hexafoil artwork). */
-export function GaiaMark({ size = 64, className }: { size?: number; className?: string }) {
+export function GaiaMark({ size = 64, className, alt = "GAIA Tech mark" }: { size?: number; className?: string; alt?: string }) {
   return (
     <Image
       src="/gaia-mark-art.png"
-      alt="GAIA Tech mark"
+      alt={alt}
       width={size}
       height={size}
       className={className}

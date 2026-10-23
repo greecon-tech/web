@@ -24,3 +24,17 @@ Greecon works with communities, farmers, municipalities, businesses, and investo
 - [Projects](https://blog.greecon.earth/projects): Planned and current Greecon projects in Albania.
 - [Terms of Service](https://greecon.earth/terms/)
 - [Privacy Notice](https://greecon.earth/privacy/)
+
+## Albanian (Shqip)
+
+The whole website is also available in Albanian at https://greecon.earth/sq/ — the same pages, translated. The blog is published in English.
+
+- [Kryefaqja](https://greecon.earth/sq/): Greecon bashkon energjinë e rinovueshme, bujqësinë inteligjente dhe menaxhimin e ujit në një platformë IoT dhe SCADA.
+- [Energjia](https://greecon.earth/sq/energy/): Sisteme diellore, hibride dhe agrovoltaike me ruajtje me bateri.
+- [Bujqësia](https://greecon.earth/sq/agriculture/): Bujqësi inteligjente me sensorë IoT për tokën, ujin dhe motin.
+- [Uji](https://greecon.earth/sq/water/): Trajtim i automatizuar i ujërave të ndotura dhe ripërdorim i ujit.
+- [Teknologjia dhe procesi](https://greecon.earth/sq/technology/): Si Greecon instalon, lidh, analizon dhe automatizon sistemet.
+- [GAIA Tech](https://greecon.earth/sq/gaia/): Inteligjenca pronësore brenda Platformës Greecon.
+- [Kushtet e shërbimit](https://greecon.earth/sq/terms/)
+- [Njoftimi i privatësisë](https://greecon.earth/sq/privacy/)
+
