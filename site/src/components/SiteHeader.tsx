@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LOCALES, LOCALE_INFO, localePath, splitLocale, type Locale } from "../i18n/config";
 import type { Dictionary } from "../i18n/types";
-import { BLOG_URL, ORG, PLATFORM_URL } from "../lib/seo";
+import { ORG, PLATFORM_URL } from "../lib/seo";
 import { GreeconMark } from "./icons";
 
 // Language-neutral paths; each is prefixed with the current language when rendered.
@@ -24,7 +24,16 @@ const trim = (path: string) => path.replace(/\/+$/, "") || "/";
  * Site navigation, sticky at the top. Desktop: logo plus inline links. Phones and tablets (up to 1100px): a Menu button
  * that opens a full-screen menu. The same links render in both; CSS decides how they are shown.
  */
-export function SiteHeader({ locale, labels }: { locale: Locale; labels: Dictionary["header"] }) {
+export function SiteHeader({
+  locale,
+  labels,
+  blogHref
+}: {
+  locale: Locale;
+  labels: Dictionary["header"];
+  /** Root of the blog in this language (the blog is a separate site, so this is a plain link). */
+  blogHref: string;
+}) {
   const { path: currentPath } = splitLocale(usePathname() ?? "/");
   const current = trim(currentPath);
   const [open, setOpen] = useState(false);
@@ -103,7 +112,7 @@ export function SiteHeader({ locale, labels }: { locale: Locale; labels: Diction
           ))}
           <li>
             {/* The blog is a separate site on a subdomain, so it is a plain link rather than a client-side route. */}
-            <a href={BLOG_URL}>{labels.blog}</a>
+            <a href={blogHref}>{labels.blog}</a>
           </li>
         </ul>
         <div className="site-menu__languages" role="group" aria-label={labels.language}>

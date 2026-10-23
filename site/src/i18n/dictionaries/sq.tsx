@@ -139,11 +139,15 @@ export const sq: Dictionary = {
   },
 
   blog: {
+    siteName: "Blogu i Greecon",
+    description:
+      "Histori, njohuri dhe projekte nga Greecon — energji e rinovueshme, bujqësi e zgjuar dhe menaxhim i ujit me IoT dhe SCADA.",
     heading: "Nga blogu",
     allArticles: "Të gjithë artikujt →",
     readArticle: "Lexo artikullin →",
-    englishOnly: "Artikujt e blogut janë në anglisht.",
-    categories: { Platform: "Platforma", Energy: "Energjia", Agriculture: "Bujqësia", Water: "Uji" },
+    englishOnly: "Këta artikuj janë në anglisht.",
+    // The same words the blog itself uses for its sectors.
+    categories: { Platform: "Platformë", Energy: "Energji", Agriculture: "Bujqësi", Water: "Ujë" },
     moreOn: {
       energy: "Më shumë për energjinë në Blogun e Greecon →",
       agriculture: "Më shumë për bujqësinë në Blogun e Greecon →",

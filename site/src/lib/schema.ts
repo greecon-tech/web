@@ -1,4 +1,4 @@
-import { LOCALES, LOCALE_INFO, type Locale } from "../i18n/config";
+import { DEFAULT_LOCALE, LOCALES, LOCALE_INFO, type Locale } from "../i18n/config";
 import { getDictionary } from "../i18n/dictionaries";
 import type { BlogPost } from "./blog";
 import { BLOG_URL, ORG, OG_IMAGE, PAGES, PLATFORM_URL, SITE_URL, pageUrl, type PageKey } from "./seo";
@@ -118,16 +118,20 @@ export function gaiaNode(locale: Locale) {
   };
 }
 
-/** The Greecon Blog, with the articles currently featured on the page. The blog is published in English. */
-export function blogNode(posts: ReadonlyArray<BlogPost>) {
+/**
+ * The Greecon Blog, with the articles currently featured on the page. `base` is the blog root the page links to
+ * (the Albanian blog when it exists, otherwise the English one), so the entity describes what visitors really get.
+ */
+export function blogNode(posts: ReadonlyArray<BlogPost>, locale: Locale, base: string) {
+  const blogLocale = base === BLOG_URL ? DEFAULT_LOCALE : locale;
+  const t = getDictionary(blogLocale);
   return {
     "@type": "Blog",
-    "@id": `${BLOG_URL}/#blog`,
-    name: "Greecon Blog",
-    url: `${BLOG_URL}/`,
-    description:
-      "Stories, insights, and projects from Greecon — renewable energy, smart agriculture, and water management powered by IoT and SCADA.",
-    inLanguage: "en",
+    "@id": `${base}/#blog`,
+    name: t.blog.siteName,
+    url: `${base}/`,
+    description: t.blog.description,
+    inLanguage: LOCALE_INFO[blogLocale].htmlLang,
     publisher: { "@id": ids.org },
     ...(posts.length
       ? {
@@ -136,7 +140,7 @@ export function blogNode(posts: ReadonlyArray<BlogPost>) {
             headline: post.title,
             url: post.url,
             datePublished: post.date,
-            inLanguage: "en",
+            inLanguage: post.lang,
             ...(post.description ? { description: post.description } : {}),
             ...(post.category ? { articleSection: post.category } : {})
           }))

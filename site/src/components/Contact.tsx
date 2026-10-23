@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { LOCALES, LOCALE_INFO, localePath, type Locale } from "../i18n/config";
 import { getDictionary } from "../i18n/dictionaries";
-import { BLOG_URL, ORG, PAGES, SOCIAL, type PageKey } from "../lib/seo";
+import { getBlogBase } from "../lib/blog";
+import { ORG, PAGES, SOCIAL, type PageKey } from "../lib/seo";
 import { InstagramIcon, LinkedInIcon, XIcon } from "./icons";
 
 export function Contact({ email, locale }: { email: string; locale: Locale }) {
@@ -36,8 +37,9 @@ export function Contact({ email, locale }: { email: string; locale: Locale }) {
 }
 
 /** `page` is the page being rendered, so the language links can point to the same page in each language. */
-export function SiteFooter({ locale, page }: { locale: Locale; page: PageKey }) {
+export async function SiteFooter({ locale, page }: { locale: Locale; page: PageKey }) {
   const t = getDictionary(locale).footer;
+  const blogBase = await getBlogBase(locale);
   const href = (key: PageKey) => localePath(locale, PAGES[key].path);
   return (
     <footer className="site-footer">
@@ -61,7 +63,7 @@ export function SiteFooter({ locale, page }: { locale: Locale; page: PageKey }) 
               <Link href={href("gaia")}>{t.links.gaia}</Link>
             </li>
             <li>
-              <a href={BLOG_URL}>{t.blog}</a>
+              <a href={blogBase}>{t.blog}</a>
             </li>
           </ul>
         </div>
@@ -112,7 +114,7 @@ export function SiteFooter({ locale, page }: { locale: Locale; page: PageKey }) 
       <div className="site-footer__legal">
         <div className="wrap wrap--wide">
           <p>{t.rights}</p>
-          <a href={BLOG_URL}>blog.greecon.earth</a>
+          <a href={blogBase}>blog.greecon.earth</a>
         </div>
       </div>
     </footer>

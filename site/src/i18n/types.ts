@@ -81,6 +81,9 @@ export interface Dictionary {
   };
 
   blog: {
+    /** What the blog calls itself, and its description, for structured data. */
+    siteName: string;
+    description: string;
     heading: string;
     allArticles: string;
     readArticle: string;
