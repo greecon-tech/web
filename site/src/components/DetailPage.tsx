@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { localePath, type Locale } from "../i18n/config";
 import { getDictionary } from "../i18n/dictionaries";
-import { BLOG_URL } from "../lib/seo";
+import { getBlogBase } from "../lib/blog";
 import { BackArrowIcon, GreeconMark } from "./icons";
 
 export function DetailIntro({
@@ -52,7 +52,7 @@ export function Philosophy({ title, lines }: { title: string; lines: ReactNode[]
 }
 
 /** Link from a page to the matching sector filter on the Greecon Blog (the blog itself is in English). */
-export function BlogCta({
+export async function BlogCta({
   locale,
   sector,
   text
@@ -62,9 +62,10 @@ export function BlogCta({
   text: "energy" | "agriculture" | "water" | "platform" | "technology";
 }) {
   const t = getDictionary(locale);
+  const base = await getBlogBase(locale);
   return (
     <p className="tech-cta wrap">
-      <a href={`${BLOG_URL}/blog?sector=${sector}`}>{t.blog.moreOn[text]}</a>
+      <a href={`${base}/blog?sector=${sector}`}>{t.blog.moreOn[text]}</a>
     </p>
   );
 }

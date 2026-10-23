@@ -13,7 +13,7 @@ import { PAGES, PLATFORM_URL } from "../lib/seo";
 export async function TechnologyView({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
   const c = t.technology;
-  const relatedPosts = await getPostsByCategory("Platform", 3);
+  const relatedPosts = await getPostsByCategory(locale, "Platform", 3);
 
   return (
     <main className="detail-page">

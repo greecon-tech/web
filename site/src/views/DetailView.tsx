@@ -19,7 +19,7 @@ export async function DetailView({ locale, page }: { locale: Locale; page: Detai
   const t = getDictionary(locale);
   const content = t[page];
   const Icon = icons[page];
-  const relatedPosts = await getPostsByCategory(blogCategory[page], 3);
+  const relatedPosts = await getPostsByCategory(locale, blogCategory[page], 3);
 
   return (
     <main className="detail-page">

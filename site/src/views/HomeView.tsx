@@ -7,18 +7,19 @@ import { JsonLd } from "../components/JsonLd";
 import { ProductCard } from "../components/ProductCard";
 import { localePath, type Locale } from "../i18n/config";
 import { getDictionary } from "../i18n/dictionaries";
-import { getLatestPosts } from "../lib/blog";
+import { getBlogBase, getLatestPosts } from "../lib/blog";
 import { blogNode, pageGraph, platformNode } from "../lib/schema";
 import { PAGES, PLATFORM_URL, type PageKey } from "../lib/seo";
 
 export async function HomeView({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
-  const latestPosts = await getLatestPosts(3);
+  const latestPosts = await getLatestPosts(locale, 3);
+  const blogBase = await getBlogBase(locale);
   const href = (key: PageKey) => localePath(locale, PAGES[key].path);
 
   return (
     <main>
-      <JsonLd data={pageGraph("home", locale, [platformNode(locale), blogNode(latestPosts)])} />
+      <JsonLd data={pageGraph("home", locale, [platformNode(locale), blogNode(latestPosts, locale, blogBase)])} />
       <h1 className="site-mark">
         <Link href={href("home")} aria-label="Greecon">
           <GreeconMark size={56} />

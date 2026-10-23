@@ -105,6 +105,8 @@ The blog is a separate Next.js site (repo `greecontech/blog`). The website conne
 - **Structured data:** the home page's JSON-LD includes the `Blog` and the featured `BlogPosting`s, linked to the Greecon organization.
 - **Privacy:** the Privacy Notice names the blog as part of the Site. The blog sets no cookies and loads no third-party scripts; keep it that way, or update the notice first.
 
+**Blog languages.** The blog is multilingual too (English at the root, Albanian at `/sq/`). For each website language the build checks the blog's sitemap: if the blog serves that language, the website's blog links (header, footer, "More on … on the Greecon Blog", "All articles"), the article cards and the structured data use it (for example `blog.greecon.earth/sq/blog/<slug>`); if not, they fall back to the English blog and a short note says the articles are in English, so a link can never lead to a 404. The blog's category identifiers stay English; the website shows them with the blog's own Albanian words.
+
 Because the website is a static export, article lists are read **at build time**. After publishing a new article, redeploy the website (Railway → the `site` service → **Redeploy**) for it to appear here. If the blog is unreachable during a build, the build still succeeds and the article sections are simply left out. Automating the redeploy (for example, a GitHub Action in the blog repo that calls Railway when an article is published) needs a Railway API token stored as a secret.
 
 ### Languages (English and Albanian)

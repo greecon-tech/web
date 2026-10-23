@@ -104,6 +104,9 @@ export const en: Dictionary = {
   },
 
   blog: {
+    siteName: "Greecon Blog",
+    description:
+      "Stories, insights, and projects from Greecon — renewable energy, smart agriculture, and water management powered by IoT and SCADA.",
     heading: "From the Blog",
     allArticles: "All articles →",
     readArticle: "Read article →",
